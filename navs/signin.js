@@ -386,7 +386,7 @@ function submitFormForLogin(e) {
             setTimeout(function() {
 
               document.getElementById("myNavForLogin").style.display = "none"
-              window.location.href = "../home.html"
+              window.location.href = "../index.html"
             }, 2000)
 
           }, 4000)
