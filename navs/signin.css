@@ -1,0 +1,433 @@
+body {
+    font-family: Arial;
+    margin: 0;
+  }
+
+  .main-heading-back {
+    background-color: rgb(174, 44, 214);
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 4px;
+  }
+  
+  .main-heading {
+    color: rgb(250, 250, 250);
+    font-size: 60px;
+    margin: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .main-heading:hover {
+    transition-duration: 1.6s;
+    color:rgb(42, 17, 49);
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #000000;
+    border-radius: 50px;
+    margin-bottom: 36px;
+  }
+
+  .topnav i {
+    color: rgb(7, 240, 228);
+  }
+
+  .topnav a {
+    margin-top: 4px;
+    margin-left: 3px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-decoration: none;
+  }
+  
+  .topnav a:hover {
+    color: rgb(7, 240, 228);
+    text-decoration: none;
+    transition-duration: 0.3s;
+  }
+  
+  /* Create a right-aligned (split) link inside the navigation bar */
+  .topnav a.split {
+    float: right;
+    color: white;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+    display: inline;
+  }
+
+  .topnav a.split:hover {
+    color: #04AA6D;
+    transition-duration: 0.3s;
+  }
+
+  .tabmain {
+    background-color: rgb(174, 44, 214);
+  }
+
+  .tablink1 {
+    background-color: #f2f2f2;
+    color: black;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+    margin-bottom: 25px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .tablink2 {
+    background-color: rgb(174, 44, 214);
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+    margin-bottom: 25px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .tablink1:hover, .tablink2:hover {
+    color: rgb(126, 99, 119);
+  }
+
+  .signInTabShow {
+    display: block;
+  }
+
+  .logInTabShow {
+    display: none;
+  }
+
+
+  .subheadingtext {
+    font-family: cursive;
+    font-size: 40px;
+  }
+
+  /* Sign In */
+  
+  input[type=text], input[type=email], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+
+  .alert1 { 
+    color: rgb(229, 255, 0);
+    margin: 0;
+    font-size: 14px;
+    text-decoration: dashed;
+    display: none;
+  }
+
+  .alert2 {
+    color: rgb(229, 255, 0);
+    margin: 0;
+    font-size: 14px;
+    text-decoration: dashed;
+    display: none;
+  }
+
+  .alert3 {
+    color: rgb(229, 255, 0);
+    margin: 0;
+    font-size: 14px;
+    text-decoration: dashed;
+    display: none;
+  }
+
+  .alert4 {
+    color: rgb(229, 255, 0);
+    margin: 0;
+    font-size: 14px;
+    text-decoration: dashed;
+    display: none;
+  }
+
+  .namenot {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+  .emailnot {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+  .passnot {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+  .passcmnot {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+  .container2 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 20px;
+  }
+  
+  .container2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #b4b4b4;
+    border-radius: 50%;
+  }
+
+  .container2:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .container2 input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .container2 input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .container2 .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .submitButton {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .submitButtonDecoy {
+    background-color: #636967;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+  }
+
+  /* login in */
+
+  .alert5 {
+    color: rgb(255, 0, 0);
+    margin: 0;
+    font-size: 14px;
+    text-decoration: dashed;
+    display: none;
+  }
+
+  .alert6 {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+  .alert7 {
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+  }
+  
+  
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.obj{
+  width: 6px;
+  height: 40px;
+  background: white;
+  margin: 0 3px;
+  border-radius: 10px;
+  animation: loading 0.8s infinite;
+}
+
+.obj:nth-child(2){
+  animation-delay: 0.1s;
+}
+.obj:nth-child(3){
+  animation-delay: 0.2s;
+}
+.obj:nth-child(4){
+  animation-delay: 0.3s;
+}
+.obj:nth-child(5){
+  animation-delay: 0.4s;
+}
+.obj:nth-child(6){
+  animation-delay: 0.5s;
+}
+.obj:nth-child(7){
+  animation-delay: 0.6s;
+}
+.obj:nth-child(8){
+  animation-delay: 0.7s;
+}
+
+
+.goingThrough1 {
+  display: block;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.goingThrough2 {
+  display: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.goingThrough12 {
+  display: block;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.goingThrough22 {
+  display: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+@keyframes loading {
+  0%{
+    height: 0;
+  }
+  50%{
+    height: 40px;
+  }
+  100%{
+    height: 0;
+  }
+}
+
+
+  .submitButtonForlogin {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+

@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Nolivia</title>
+        <link rel="stylesheet" href="./home.css">
+        <script src="https://kit.fontawesome.com/548f053cec.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+          <div class="main-heading-back">
+
+            <h2 class="main-heading">
+                Novilia
+            </h2>
+
+            <div class="topnav"> 
+                <a class="active" href="">Home</a>
+                <a href="">Releases</a>
+                <a href="">Database</a>
+                <a class="split" href="./navs/signin.html"><i class="fa-regular fa-user"></i></a>
+                <div id="accountCentre" class="accountInfo" onclick="toggleDropdown()"></div>
+              </div>
+              <div class="AccountInfoDropdown-content" id="AccountInfoDropdown">
+                <div>
+                  <img class="accProfile" src="./image/Untitled.png" alt="">
+                  <h3 class="lables">Username</h3>
+                  <h2 class="accName"></h2>
+                  <h3 class="lables">Email Address</h3>
+                  <h2 class="accEmail"></h2>
+                  <div style="margin-top: 15px;">
+                    <label onclick="signInPage()" class="userManage" for=""><i class="fa-solid fa-user-plus"></i></label>
+                    <label onclick="openNavForEditingProfile()" class="userManage" for=""><i class="fa-solid fa-user-pen"></i></label>
+                  </div>
+                </div>
+                
+            </div>
+              
+        </div>
+
+        <div id="myNavForEditingProfile" class="overlayProfileSetting">
+            <a href="javascript:void(0)" class="closebtnEP" onclick="closeNavForEditingProfile()">&times;</a>
+            <div class="overlayProfileSetting-content">
+              <div class="boxPE">
+                <h2 class="headingPE">Profile Editor</h2>
+                <img class="profilePicture" src="./image/Untitled.png" alt="">
+
+
+                <div>
+                    <label for="name"></label>
+                    <input class="inputsPE" id="name" type="text" placeholder="new nametag">
+                </div>
+
+                <div>
+                    <label for="password"></label>
+                    <input class="inputsPE" id="password" type="text" placeholder="old password">
+                </div>
+
+                <div>
+                    <label for="password"></label>
+                    <input class="inputsPE" id="password" type="text" placeholder="new password">
+                </div>
+
+                <div style="text-align: left;">
+                    <div><h4 class="alert1">&#8618; Password u provided is incorrect</h4></div>
+                    <div><h4 class="alert2">&#8618; Your new password must contain a minimum of 8 characters</h4></div>
+                    <div><h4 class="alert3">&#8618; That nametag is already taken</h4></div>
+                </div>
+
+                <button class="submitButton" type="submit">Save</button>
+
+              </div>
+            </div>
+          </div>
+
+          
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        <script src="./home.js"></script>       
+    </body>
+</html>

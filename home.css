@@ -1,0 +1,252 @@
+
+
+body {
+  font-family: Arial;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+html {
+  background-color: rgb(178, 109, 199);
+  margin: 0;
+  padding: 0;
+}
+
+.main-heading-back {
+  background-color: rgb(174, 44, 214);
+  padding-right: 10px;
+  padding: 20px 10px 4px;
+  width: auto;
+}
+
+.main-heading {
+  color: rgb(250, 250, 250);
+  font-size: 60px;
+  margin: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.main-heading:hover {
+  transition-duration: 1.6s;
+  color:rgb(42, 17, 49);
+}
+
+
+  .topnav {
+    overflow: hidden;
+    background-color: #000000;
+    border-radius: 50px;
+    margin-bottom: 36px;
+  }
+
+  .topnav a.active {
+    color: rgb(7, 240, 228);
+  }
+  
+  .topnav a {
+    margin-top: 4px;
+    margin-left: 3px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-decoration: none;
+  }
+  
+  .topnav a:hover {
+    color: rgb(7, 240, 228);
+    text-decoration: none;
+    transition-duration: 0.3s;
+  }
+  
+  /* Create a right-aligned (split) link inside the navigation bar */
+  .topnav a.split {
+    float: right;
+    color: white;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+    display: inline;
+  }
+
+  .topnav a.split:hover {
+    color: #04AA6D;
+    transition-duration: 0.3s;
+  }
+
+  .accountInfo {
+    background-image: url(./image/Untitled.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    height: 35px;
+    width: 35px;
+    margin-right: 11px;
+    margin-top: 9px;
+    margin-left: 3px;
+    border-radius: 50%;
+    float: right;
+    display: inline;
+  }
+
+  .accountInfo:hover {
+    cursor: pointer;
+  }
+
+  #AccountInfoDropdown {
+    display: none;
+    background-color: rgb(62, 62, 190);
+    min-width: auto;
+    min-height: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    float: right;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .accProfile {
+    width: 70px;
+    height: 70px;
+    background-position: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .accName {
+    color: rgb(255, 244, 244);
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .accEmail {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .lables {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .userManage {
+    margin-top: 10px;
+    display: inline;
+    width: 50%;
+    background-color: rgb(62, 62, 190);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .overlayProfileSetting {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .boxPE {
+    width: 70%; 
+    height: auto; 
+    background-color: #000000;
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.178);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center
+  }
+
+  img.profilePicture {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    border-radius: 50%;
+    border: 5px solid red;
+    margin-bottom: 10px;
+  }
+
+  .headingPE {
+    color: white;
+    font-family: cursive;
+    font-size: 30px;
+  }
+
+  .inputsPE {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: block;
+    color: white;
+    background-color: #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  .alert1 {
+    color: rgb(43, 71, 230);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .alert2 {
+    color: rgb(43, 71, 230);
+    font-size: 13px;
+  }
+
+  .alert3 {
+    color: rgb(43, 71, 230);
+    font-size: 13px;
+  }
+  
+  .overlayProfileSetting a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlayProfileSetting a:hover, .overlayProfileSetting a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlayProfileSetting .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    padding: 8px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlayProfileSetting a {font-size: 20px}
+    .overlayProfileSetting .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+

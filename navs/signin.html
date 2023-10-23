@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./signin.css">
+        <title>Sign up - novilia</title>
+        <script src="https://kit.fontawesome.com/548f053cec.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+        <div class="main-heading-back">
+
+            <h2 class="main-heading">
+                Novilia
+            </h2>
+
+            <div class="topnav"> 
+                <a href="/index.html">Home</a>
+                <a href="">Releases</a>
+                <a href="">Database</a>
+                <a class="split" href="/navs/signin.html"><i class="fa-regular fa-user"></i></a>
+                <div id="accountCentre" class="accountInfo""></div>
+            </div>
+              
+        </div>
+
+        <div class="tabmain" id="pageSelector">
+            <button class="tablink1" onclick="signInNow()">Sign Up</button>
+            <button class="tablink2" onclick="logInNow()">Log In</button>
+        </div>
+
+        
+
+        <div class="signInTabShow">
+        
+        <div class="container">
+            <div class="subheading">
+                <h2 class="subheadingtext">
+                    Sign Up
+                </h2>
+            </div>
+
+            <form action="" id="signInForm">
+          
+              <label for="name">Username</label> <label class="namenot" for="">.</label>
+              <input type="text" id="name" placeholder="Create a username">
+          
+              <label for="email">Email</label> <label class="emailnot" for="">.</label>
+              <input type="email" id="email" placeholder="Your Email address">
+
+              <label for="password">Password</label> <label class="passnot" for="">.</label>
+              <input type="text" id="password" placeholder="Create a password">
+            
+              <label for="passwordcm">Comfirm Password</label> <label class="passcmnot" for="">.</label>
+              <input type="text" id="passwordcm" placeholder="Rewite Password">
+              <div><h4 class="alert4">&#8618; Username is already in use.</h4></div>
+              <div><h4 class="alert3">&#8618; Email is already taken.</h4></div>
+              <div><h4 class="alert1">&#8618; Password must contain more than 8 characters.</h4></div>
+              <div><h4 class="alert2">&#8618; Passwords does not match.</h4></div>
+
+              
+              <label class="container2">
+                <input type="checkbox" id="agreeCheck" checked="checked">
+                <span class="checkmark"></span><span style="font-size: 14px;">by agreeing this u will follow our privacy and policies.</span>
+              </label>
+
+              <button class="submitButton" type="submit">Submit</button>
+
+              <div class="submitButtonDecoy" ">submit</div>
+            </form>
+          </div>
+
+        </div>
+
+
+        <div id="myNavForSignIn" class="overlay">
+            <div class="loading">
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+
+                    <h2 class="goingThrough1">
+                       Signing in
+                    </h2>
+
+                    <h2 class="goingThrough2">
+                        Successful!
+                     </h2>
+              </div>
+          </div>
+
+          <div id="myNavForLogin" class="overlay">
+            <div class="loading">
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+
+                    <h2 class="goingThrough12">
+                       Saving Login Info
+                    </h2>
+
+                    <h2 class="goingThrough22">
+                        Redirecting
+                     </h2>
+              </div>
+          </div>
+
+
+        <div class="logInTabShow">
+            <div class="container">
+                <div class="subheading">
+                    <h2 class="subheadingtext">
+                        Log In
+                    </h2>
+                </div>
+    
+                <form action="" id="logInForm">
+              
+                  <label for="name">Name</label> <label class="alert6" for="">.</label>
+                  <input type="text" id="nameLogin" placeholder="your Username">
+                  
+
+                  <label for="password">Password</label> <label class="alert7" for="">.</label>
+                  <input type="text" id="passLogin" placeholder="enter your password">
+                 
+
+                  <div><h4 class="alert5">- Username or password is incorrect</h4></div>
+                  <button class="submitButtonForlogin" type="submit">Log In</button>
+    
+                </form>
+              </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        <script src="./signin.js"></script>
+    </body>
+</html>
+
+
+
+
