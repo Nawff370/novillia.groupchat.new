@@ -33,6 +33,12 @@ const firebaseConfig = {
   document.querySelector(".topnav a.split").style.display = "none"
   document.querySelector(".accountInfo").style.display = "none"
 
+ 
+    document.querySelector(".goingThrough1").style.display = "inline"
+
+    document.getElementById("waitingScreen").style.display = "block"
+
+
   var database = firebase.database()
 
   window.onload = function() {
@@ -75,10 +81,14 @@ const firebaseConfig = {
               document.querySelector(".profilePicture").src = userProfile
 
               document.querySelector(".inputsPE").placeholder = userName
+
+              document.getElementById("waitingScreen").style.display = "none"
                 
           } else {
             document.querySelector(".topnav a.split").style.display = "inline"
             document.querySelector(".accountInfo").style.display = "none"
+
+            document.getElementById("waitingScreen").style.display = "none"
           }
         })
 
@@ -107,6 +117,7 @@ const firebaseConfig = {
           }
       }
    }
+
 
 
 
