@@ -263,7 +263,31 @@ function submitSignIn(e) {
       emailCheckPromise.then(function(emailCheck) {
         nameCheckPromise.then(function(nameCheck) { 
           if (lengthCheck==1, matchCheck==1, emailCheck==1, nameCheck==1) {
-            createNewAccount(nameOfUser, email, pass)
+
+            // Date of account creation
+            var currentdate = new Date()
+            var date = currentdate.toLocaleString()
+
+            var dateOfCreation = date.replace(/\//g, 'NN').replace(/:/g, 'NN').replace(/,/g, '');
+            
+            async function generateUID(email, password) {
+              const encoder = new TextEncoder();
+              const data = encoder.encode(email + password);
+              
+              const buffer = await crypto.subtle.digest('SHA-256', data);
+              
+              const byteArray = Array.from(new Uint8Array(buffer));
+              const hexString = byteArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+              
+              return hexString
+            }
+
+            var uid = generateUID(email, pass).then((l)=>{
+
+              // Creating account
+              createNewAccount(nameOfUser, email, pass, l, dateOfCreation)
+            })
+
 
             document.getElementById('nameLogin').value = nameOfUser
             document.getElementById('passLogin').value = pass
@@ -300,13 +324,17 @@ function submitSignIn(e) {
 
 
 // Save data to the database
-const createNewAccount = (nameOfUser, email, pass) => {
+const createNewAccount = (nameOfUser, email, pass, uid, doc) => {
   var newSigninForm = firebase.database().ref('users/' + nameOfUser)
 
   newSigninForm.set({
     name: nameOfUser,
     email: email,
     password: pass,
+    theme: "default",
+    doc: doc,
+    uid: uid,
+    profile: "https://openclipart.org/image/800px/247320"
   })
 }
 
@@ -354,6 +382,9 @@ function submitFormForLogin(e) {
         var userPassword = userData.password
         var userEmail = userData.email
         var userName = userData.name
+        var userDOC = userData.doc
+        var userUid = userData.uid
+        var userProfile = userData.profile
 
         if (userPassword === password) {
           document.querySelector(".alert5").style.display = "none"
@@ -371,7 +402,10 @@ function submitFormForLogin(e) {
             name: userName,
             email: userEmail,
             password: userPassword,
-            profile: "https://openclipart.org/image/800px/247320"
+            theme: "default",
+            doc: userDOC,
+            uid: userUid,
+            profile: userProfile
           })
 
           // open nav
@@ -386,7 +420,7 @@ function submitFormForLogin(e) {
             setTimeout(function() {
 
               document.getElementById("myNavForLogin").style.display = "none"
-              window.location.href = "../index.html"
+              window.location.href = "../index.html" // to home
             }, 2000)
 
           }, 4000)
