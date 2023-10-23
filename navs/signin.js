@@ -19,6 +19,10 @@ function logInNow() {
   document.querySelector(".tablink2").style.backgroundColor = "#f2f2f2";
 }
 
+functionhome() {
+  window.location.href = "../index.html" // to home
+}
+
 
 const firebaseConfig = {
 
