@@ -386,7 +386,7 @@ function submitFormForLogin(e) {
             setTimeout(function() {
 
               document.getElementById("myNavForLogin").style.display = "none"
-              window.location.href = "../index.html"
+              window.location.href = "../home.html"
             }, 2000)
 
           }, 4000)
@@ -406,9 +406,5 @@ function submitFormForLogin(e) {
     })
   }
 }
-
-
-  
-
 
 
