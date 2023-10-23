@@ -19,7 +19,7 @@ function logInNow() {
   document.querySelector(".tablink2").style.backgroundColor = "#f2f2f2";
 }
 
-functionhome() {
+function home() {
   window.location.href = "../index.html" // to home
 }
 
