@@ -10,6 +10,9 @@
     document.getElementById("myNavForEditingProfile").style.display = "none";
   }
 
+
+  
+
 const firebaseConfig = {
 
     apiKey: "AIzaSyBy80iYyXzTB_FodMshSHEK_jsphsMMb-M",
@@ -43,9 +46,14 @@ const firebaseConfig = {
 
   window.onload = function() {
     checkSavedData()
+    profileEditor()
 
     setInterval(function() {
     checkSavedData()
+    }, 100)
+
+    setInterval(function() {
+      profileEditor()
     }, 100)
 
   }
@@ -85,7 +93,7 @@ const firebaseConfig = {
               document.querySelector(".profilePicture").src = userProfile
               document.querySelector(".accUid").textContent = userUid
 
-              document.querySelector(".inputsPE").placeholder = userName
+              document.querySelector(".inputsPE1").placeholder = userName + " (current nametag)"
 
               document.getElementById("waitingScreen").style.display = "none"
                 
@@ -124,5 +132,262 @@ const firebaseConfig = {
    }
 
 
+  function profileEditor() {
+
+    fetch('https://api.ipify.org?format=json')
+     .then(response => response.json())
+     .then(data => {
+
+      var ip = data.ip
+      var numbers = ip.split('.').map(Number);
+      var ipAddress = numbers.join('');
+
+      var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
+         ipAddressRef.once('value', function(snapshot) {
+          if (snapshot.exists()) {
+              var userData = snapshot.val()
+              var userEmail = userData.email
+              var userName = userData.name
+              var userPassword = userData.password
+              var userProfile = userData.profile
+              var userDOC = userData.doc
+              var userUid = userData.uid
+              var userProfile = userData.profile
+              var userTheme = userData.theme
+
+
+              var nametag = document.getElementById('name').value
+              var oldpass = document.getElementById('oldpassword').value
+              var newpass = document.getElementById('newpassword').value
+
+              var usersRef = database.ref('users/' + nametag)
+              usersRef.once('value', function(snap2) {
+
+                const formData = new FormData();
+                const fileInput = document.getElementById('profileImage')
+
+                fileInput.addEventListener('click', () => {
+                  // This code will run when a file is selected using the file input.
+                  const filepick = document.getElementById('profilePicker')
+                  filepick.type = 'file'
+
+                  filepick.onchange = e => { 
+
+                    // getting a hold of the file reference
+                    var file = e.target.files[0]; 
+                 
+                    // setting up the reader
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file); // this is reading as data url
+                 
+                    // here we tell the reader what to do when it's done reading...
+                    reader.onload = readerEvent => {
+                       var content = readerEvent.target.result; // this is the content!                    
+
+                      var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
+                      ipAddressRef.once('value', function(snapshot) {
+                       if (snapshot.exists()) {
+                       var userData = snapshot.val()
+                       var userEmail = userData.email
+                       var userName = userData.name
+                       var userPassword = userData.password
+                       var userProfile = userData.profile
+                       var userDOC = userData.doc
+                       var userUid = userData.uid
+                       var userProfile = userData.profile
+                       var userTheme = userData.theme
+
+                       ipAddressRef.update({
+                        profile: content
+                       })
+
+                        var realDatabase = database.ref('users/' + userName)
+                        realDatabase.once('value', function(snapshot) {
+                         if (snapshot.exists()) {
+                         var userData = snapshot.val()
+                         var userEmail = userData.email
+                         var userName = userData.name
+                         var userPassword = userData.password
+                         var userProfile = userData.profile
+                         var userDOC = userData.doc
+                         var userUid = userData.uid
+                         var userProfile = userData.profile
+                         var userTheme = userData.theme
+
+                         realDatabase.update({
+                          profile: content
+                         })
+
+
+                        } else {}
+                       })
+
+                      } else {}
+                     })
+                   }
+                 
+                 }
+
+                  filepick.click()
+
+                if (file) {
+                  alert('HI')
+                }
+               });
+            
+          
+              
+                 if (nametag=="") {
+                  document.querySelector(".alert3").style.display = "none"
+                  document.querySelector(".checkmark1").style.color = "rgb(255, 0, 0)"
+                 } else if (nametag==userName) {
+                   document.querySelector(".alert3").style.display = "none"
+                   document.querySelector(".checkmark1").style.color = "rgb(14, 240, 6)"
+                   var userCheck = 1
+                 } else if (snap2.exists()) {
+                   document.querySelector(".alert3").style.display = "block"
+                   document.querySelector(".checkmark1").style.color = "rgb(255, 0, 0)"
+                   var userCheck = 0
+                 } else {
+                   document.querySelector(".alert3").style.display = "none"
+                   document.querySelector(".checkmark1").style.color = "rgb(14, 240, 6)"
+                   var userCheck = 1  
+                 }
+
+                 if (userPassword==oldpass) {
+                  document.querySelector(".alert1").style.display = "none"
+                  document.querySelector(".checkmark2").style.color = "rgb(14, 240, 6)"
+                  var passCheck = 1
+                 } else if (oldpass=='') {
+                  document.querySelector(".alert1").style.display = "none"
+                  document.querySelector(".checkmark2").style.color = "rgb(255, 0, 0)"
+                 } else {
+                  document.querySelector(".alert1").style.display = "block"
+                  document.querySelector(".checkmark2").style.color = "rgb(255, 0, 0)"
+                  var passCheck = 0
+                 }
+
+                 if (newpass=="") {
+                  document.querySelector(".alert2").style.display = "none"
+                  document.querySelector(".checkmark3").style.color = "rgb(255, 0, 0)"
+                  var newpassCheck = 0
+                 } else {
+                  if (newpass.length < 8) {
+                    document.querySelector(".alert2").style.display = "block"
+                    document.querySelector(".checkmark3").style.color = "rgb(255, 0, 0)"
+                    var newpassCheck = 0
+                   }  else {
+                    document.querySelector(".alert2").style.display = "none"
+                    document.querySelector(".checkmark3").style.color = "rgb(14, 240, 6)"
+                    var newpassCheck = 1
+                   }
+                 }
+
+                 if (userCheck + passCheck + newpassCheck == 3) {
+                  document.querySelector(".submitButtonDecoy").style.display = "none"
+                  document.querySelector(".submitButton").style.display = "block"
+                 } else {
+                  document.querySelector(".submitButton").style.display = "none"
+                  document.querySelector(".submitButtonDecoy").style.display = "inline-block"
+                 }
+
+                 document.getElementById('profileEditForm').addEventListener('submit', submitChanges);
+
+                 function submitChanges(e) {
+                  e.preventDefault()
+                  if (userCheck==1, passCheck==1, newpassCheck==1) {
+
+                    var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
+                      ipAddressRef.once('value', function(snapshot) {
+                       if (snapshot.exists()) {
+                       var userData = snapshot.val()
+                       var userEmail = userData.email
+                       var userNameIp = userData.name
+                       var userPassword = userData.password
+                       var userProfile = userData.profile
+                       var userDOC = userData.doc
+                       var userUid = userData.uid
+                       var userProfile = userData.profile
+                       var userTheme = userData.theme
+
+
+                       var realDatabase = database.ref('users/' + userNameIp)
+                       realDatabase.once('value', function(snapshot) {
+                        if (snapshot.exists()) {
+                        var userData = snapshot.val()
+                        var userEmail = userData.email
+                        var userName = userData.name
+                        var userPassword = userData.password
+                        var userProfile = userData.profile
+                        var userDOC = userData.doc
+                        var userUid = userData.uid
+                        var userProfile = userData.profile
+                        var userTheme = userData.theme
+                        
+                         if (userName==nametag) {
+
+                          var newForm = firebase.database().ref('users/' + userNameIp)
+
+                           newForm.set({
+                             name: userNameIp,
+                             email: userEmail,
+                             password: newpass,
+                             theme: userTheme,
+                             doc: userDOC,
+                             uid: userUid,
+                             profile: userProfile
+                           })
+
+                           realDatabase.remove()
+
+                         } else {
+
+                           var newForm = firebase.database().ref('users/' + nametag)
+
+                           newForm.set({
+                             name: nametag,
+                             email: userEmail,
+                             password: newpass,
+                             theme: userTheme,
+                             doc: userDOC,
+                             uid: userUid,
+                             profile: userProfile
+                           })
+
+                           realDatabase.remove()
+
+                         }
+                       } else {}
+                      })
+
+                       ipAddressRef.update({
+                        name: nametag,
+                        password: newpass
+                       }).then(()=>{
+                        
+                        window.location.href = "./index.html"
+                      })
+                       
+                      
+
+                      } else {}
+                     })
+
+                  }
+                 }
+
+
+
+              })
+
+          } else {
+            
+          }
+        })
+
+      })
+  }
+
+  
 
   

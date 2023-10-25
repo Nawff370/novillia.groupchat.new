@@ -91,6 +91,8 @@ html {
     border-radius: 50%;
     float: right;
     display: inline;
+    background-size: cover;
+    border: 1px solid rgb(155, 155, 155);
   }
 
   .accountInfo:hover {
@@ -151,10 +153,11 @@ html {
     padding: 10px;
     cursor: pointer;
     text-align: center;
+    
   }
 
   .overlayProfileSetting {
-    height: 100%;
+    height: 1000px;
     width: 100%;
     display: none;
     position: fixed;
@@ -167,8 +170,9 @@ html {
   
   .boxPE {
     width: 70%; 
+    height: 1000px;
     height: auto; 
-    background-color: #000000;
+    background-color: #ffffff;
     position: fixed;
     top: 50%; 
     left: 50%; 
@@ -181,47 +185,144 @@ html {
     text-align: center
   }
 
-  img.profilePicture {
-    width: 150px;
-    height: 150px;
+  .profilePicture {
+    width: 110px;
+    height: 110px;
     background-position: center;
     border-radius: 50%;
-    border: 5px solid red;
+    border: 2px solid rgb(97, 97, 97);
     margin-bottom: 10px;
+    position: relative; 
+    transition: opacity 0.5s;
   }
 
-  .headingPE {
-    color: white;
-    font-family: cursive;
-    font-size: 30px;
+  .profilePicture:hover {
+    opacity: 0.3;
+    cursor: pointer;
   }
-
-  .inputsPE {
+  
+  .inputsPE1 {
     width: 100%;
     padding: 12px 20px;
     margin: 15px 0;
     display: block;
-    color: white;
+    color: rgb(255, 246, 246);
     background-color: #000000;
+    border: 5px solid black;
     border-radius: 4px;
-    box-sizing: border-box;
     border-radius: 20px;
+    text-decoration: none;
+    outline: none;
+  }
+
+  .inputsPE2 {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: block;
+    color: rgb(255, 246, 246);
+    background-color: #000000;
+    border: 5px solid black;
+    border-radius: 4px;
+    border-radius: 20px;
+    text-decoration: none;
+    outline: none;
+  }
+
+
+  .inputsPE3 {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: block;
+    color: rgb(255, 246, 246);
+    background-color: #000000;
+    border: 5px solid black;
+    border-radius: 4px;
+    border-radius: 20px;
+    text-decoration: none;
+    outline: none;
+  }
+
+  .input-container {
+    position: relative;
+  }
+
+  .checkmark1 {
+    position: absolute;
+    top: 50%;
+    right: 12px; 
+    transform: translateY(-50%);
+    color: rgb(255, 0, 0); 
+    cursor: pointer;
+  }
+
+  .checkmark2 {
+    position: absolute;
+    top: 50%;
+    right: 12px; 
+    transform: translateY(-50%);
+    color: rgb(255, 0, 0); 
+    cursor: pointer;
+  }
+
+  .checkmark3 {
+    position: absolute;
+    top: 50%;
+    right: 12px; 
+    transform: translateY(-50%);
+    color: rgb(255, 0, 0); 
+    cursor: pointer;
+  }
+
+  .submitButton {
+    margin-top: 10px;
+    background-color: rgb(50, 212, 50);
+    outline: none;
+    color: black;
+    border-radius: 4px;
+    border: 5px solid rgb(50, 212, 50);
+    padding: 12 40px;
+    border-radius: 13px;
+    min-width: 100%;
+    display: none;
+  }
+
+  .submitButton:hover {
+    cursor: pointer;
+    padding: 16 44px;
+  }
+
+  .submitButtonDecoy {
+    margin-top: 10px;
+    background-color: rgb(109, 119, 109);
+    outline: none;
+    color: black;
+    border-radius: 4px;
+    border: 5px solid rgb(109, 119, 109);
+    padding: 12 40px;
+    border-radius: 13px;
+    display: none;
+    min-width: 100%;
   }
 
   .alert1 {
-    color: rgb(141, 131, 185);
+    color: rgb(43, 71, 230);
     font-size: 13px;
     margin: 0;
+    display: none;
   }
 
   .alert2 {
     color: rgb(43, 71, 230);
     font-size: 13px;
+    display: none;
   }
 
   .alert3 {
     color: rgb(43, 71, 230);
     font-size: 13px;
+    display: none;
   }
   
   .overlayProfileSetting a {
@@ -342,3 +443,6 @@ html {
   }
 }
 
+.profilePickerInput {
+  display: none;
+}

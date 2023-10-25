@@ -33,43 +33,47 @@
                     <label onclick="openNavForEditingProfile()" class="userManage" for=""><i class="fa-solid fa-user-pen"></i></label>
                   </div>
                 </div>
-                
+
             </div>
-              
         </div>
+
 
         <div id="myNavForEditingProfile" class="overlayProfileSetting">
             <a href="javascript:void(0)" class="closebtnEP" onclick="closeNavForEditingProfile()">&times;</a>
             <div class="overlayProfileSetting-content">
-              <div class="boxPE">
-                <h2 class="headingPE">Profile Editor</h2>
-                <img class="profilePicture" src="./image/Untitled.png" alt="">
+              <form id="profileEditForm" class="boxPE">
+                  <img id="profileImage" class="profilePicture" onclick="chooseNewProfile()" src="./image/Untitled.png" alt="">
+                  <input class="profilePickerInput" id="profilePicker" type="file">
 
-
-                <div>
+                
+                <div class="input-container">
                     <label for="name"></label>
-                    <input class="inputsPE" id="name" type="text" placeholder="new nametag">
+                    <input class="inputsPE1" id="name" type="text" placeholder="nametag">
+                    <div class="checkmark1"><i class="fa-solid fa-circle-check"></i></div>
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="password"></label>
-                    <input class="inputsPE" id="password" type="text" placeholder="old password">
+                    <input class="inputsPE2" id="oldpassword" type="text" placeholder="old password">
+                    <div class="checkmark2"><i class="fa-solid fa-circle-check"></i></div>
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="password"></label>
-                    <input class="inputsPE" id="password" type="text" placeholder="new password">
+                    <input class="inputsPE3" id="newpassword" type="text" placeholder="new password">
+                    <div class="checkmark3"><i class="fa-solid fa-circle-check"></i></div>
                 </div>
 
                 <div style="text-align: left;">
-                    <div><h4 class="alert1">&#8618; Password u provided is incorrect</h4></div>
+                    <div><h4 class="alert1">&#8618; Password is incorrect</h4></div>
                     <div><h4 class="alert2">&#8618; Your new password must contain a minimum of 8 characters</h4></div>
                     <div><h4 class="alert3">&#8618; That nametag is already taken</h4></div>
                 </div>
 
                 <button class="submitButton" type="submit">Save</button>
+                <button class="submitButtonDecoy" disabled>Save</button>
 
-              </div>
+              </form>
             </div>
           </div>
 
