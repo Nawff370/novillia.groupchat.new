@@ -396,10 +396,13 @@ function submitFormForLogin(e) {
           fetch('https://api.ipify.org?format=json')
          .then(response => response.json())
          .then(data => {
-          var ip = data.ip
-          var numbers = ip.split('.').map(Number);
-          var ipAddress = numbers.join('');
 
+
+          // Formatting ip
+          const formattedIP = data.ip
+          const replacement = "3202"
+          const ipAddress = formattedIP.split('.').join(replacement)
+         
           var newIpForm = firebase.database().ref('savedLocationData/' + ipAddress)
 
           newIpForm.set({

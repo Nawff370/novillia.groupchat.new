@@ -11,10 +11,12 @@
   }
 
   var accountUid = ""
+  var permforautoplay = ""
 
   function copyUid() {
     navigator.clipboard.writeText(accountUid)
   }
+
   
 
   const firebaseConfig = {
@@ -61,16 +63,19 @@
     }, 100)
 
   }
-  
+
+
 
   function checkSavedData() {
+
 
     fetch('https://api.ipify.org?format=json')
      .then(response => response.json())
      .then(data => {
-        var ip = data.ip
-        var numbers = ip.split('.').map(Number);
-        var ipAddress = numbers.join('');
+
+      var formattedIP = data.ip
+      const replacement = "3202";
+      const ipAddress = formattedIP.split('.').join(replacement);
 
         var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
         ipAddressRef.once('value', function(snapshot) {
@@ -91,19 +96,21 @@
               document.querySelector(".accName").textContent = userName
               document.querySelector(".accEmail").textContent = userEmail
               document.querySelector(".accountInfo").style.backgroundImage = `url(${userProfile})`
-              document.querySelector(".accProfile").src = userProfile
-              document.querySelector(".profilePicture").src = userProfile
+              document.querySelector(".accProfile").style.backgroundImage = `url(${userProfile})`
+              document.querySelector(".profilePicture").style.backgroundImage = `url(${userProfile})`
              
               accountUid = userUid
               document.querySelector(".inputsPE1").placeholder = userName + " (current nametag)"
 
-              document.getElementById("waitingScreen").style.display = "none"
-                
+              document.getElementById("waitingScreen").style.display = "none" 
+
+
           } else {
             document.querySelector(".topnav a.split").style.display = "inline"
             document.querySelector(".accountInfo").style.display = "none"
 
             document.getElementById("waitingScreen").style.display = "none"
+
           }
         })
 
@@ -113,6 +120,7 @@
       })
 
   }
+
 
    function toggleDropdown() {
     var dropdown = document.getElementById("AccountInfoDropdown");
@@ -140,9 +148,9 @@
      .then(response => response.json())
      .then(data => {
 
-      var ip = data.ip
-      var numbers = ip.split('.').map(Number);
-      var ipAddress = numbers.join('');
+      var formattedIP = data.ip
+      const replacement = "3202";
+      const ipAddress = formattedIP.split('.').join(replacement);
 
       var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
          ipAddressRef.once('value', function(snapshot) {
@@ -165,7 +173,6 @@
               var usersRef = database.ref('users/' + nametag)
               usersRef.once('value', function(snap2) {
 
-                const formData = new FormData();
                 const fileInput = document.getElementById('profileImage')
 
                 fileInput.addEventListener('click', () => {
@@ -391,5 +398,8 @@
   }
 
   
+
+  
+
 
   
