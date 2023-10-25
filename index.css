@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 
 body {
@@ -446,3 +451,108 @@ html {
 .profilePickerInput {
   display: none;
 }
+
+
+/* Your existing CSS styles here */
+
+@media screen and (max-width: 768px) {
+  /* Media queries for screens with a maximum width of 768px (typical for phones) */
+  
+  .main-heading {
+      font-size: 2rem; /* Reduce the font size of the main heading */
+      margin: 1rem 0; /* Adjust the margins */
+  }
+
+  .topnav {
+      padding: 10px; /* Reduce the padding to make the navigation bar more compact */
+  }
+
+  .topnav a {
+      font-size: 14px; /* Adjust the font size of navigation links */
+      margin-top: 4px; /* Adjust the top margin for navigation links */
+  }
+
+  .topnav a.split {
+      margin-right: 5px; /* Increase the margin for the split link */
+  }
+
+  .accountInfo {
+      width: 30px; /* Reduce the size of the account info icon */
+      height: 30px; /* Reduce the size of the account info icon */
+      margin-right: 5px; /* Adjust the margin for the account info icon */
+  }
+
+  #AccountInfoDropdown {
+      min-width: 80%; /* Adjust the minimum width of the account info dropdown */
+      padding: 10px; /* Adjust the padding for the account info dropdown */
+  }
+
+  .accName,
+  .accEmail,
+  .accUid {
+      font-size: 14px; /* Adjust the font size for account info text */
+      margin-top: 5px; /* Adjust the top margin for account info text */
+  }
+
+  .lables {
+      font-size: 12px; /* Adjust the font size for labels */
+      margin-top: 10px; /* Adjust the top margin for labels */
+  }
+
+  .userManage {
+      width: 45%; /* Adjust the width of user management buttons */
+      padding: 8px; /* Adjust the padding for user management buttons */
+  }
+
+  .profilePicture {
+      width: 70px; /* Adjust the size of the profile picture */
+      height: 70px; /* Adjust the size of the profile picture */
+  }
+
+  .inputsPE1,
+  .inputsPE2,
+  .inputsPE3 {
+      padding: 10px; /* Adjust the padding for input fields */
+  }
+
+  .checkmark1,
+  .checkmark2,
+  .checkmark3 {
+      right: 8px; /* Adjust the position of checkmarks */
+  }
+
+  .submitButton,
+  .submitButtonDecoy {
+      display: block; /* Display the submit button */
+      width: 100%; /* Set the width to 100% for full width */
+      padding: 12px 0; /* Adjust the padding for the button */
+  }
+
+  .alert1,
+  .alert2,
+  .alert3 {
+      display: block; /* Display the alerts */
+  }
+
+  .overlayProfileSetting a {
+      font-size: 24px; /* Adjust the font size for overlay links */
+  }
+
+  .overlayProfileSetting .closebtn {
+      font-size: 40px; /* Adjust the font size for the close button */
+      top: 15px; /* Adjust the top position for the close button */
+      right: 35px; /* Adjust the right position for the close button */
+  }
+
+  .overlay a {
+      font-size: 24px; /* Adjust the font size for overlay links */
+  }
+
+  .overlay .closebtn {
+      font-size: 40px; /* Adjust the font size for the close button */
+      top: 15px; /* Adjust the top position for the close button */
+      right: 35px; /* Adjust the right position for the close button */
+  }
+}
+
+/* End of media queries for smaller screens */
