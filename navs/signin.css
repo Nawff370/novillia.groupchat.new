@@ -33,14 +33,15 @@ body {
   }
 
   .topnav i {
-    color: rgb(7, 240, 228);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
   }
 
   .topnav a {
-    margin-top: 4px;
+    margin-top: 2px;
     margin-left: 3px;
     float: left;
-    color: #f2f2f2;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -49,7 +50,7 @@ body {
   }
   
   .topnav a:hover {
-    color: rgb(7, 240, 228);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     transition-duration: 0.3s;
   }

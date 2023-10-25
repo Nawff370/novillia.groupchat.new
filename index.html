@@ -3,6 +3,7 @@
         <title>Nolivia</title>
         <link rel="stylesheet" href="./index.css">
         <script src="https://kit.fontawesome.com/548f053cec.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     </head>
     <body>
 
@@ -26,11 +27,10 @@
                   <h2 class="accName"></h2>
                   <h3 class="lables">Email Address</h3>
                   <h2 class="accEmail"></h2>
-                  <h3 class="lables">Uid</h3>
-                  <h2 class="accUid"></h2>
-                  <div style="margin-top: 15px;">
-                    <label onclick="signInPage()" class="userManage" for=""><i class="fa-solid fa-user-plus"></i></label>
-                    <label onclick="openNavForEditingProfile()" class="userManage" for=""><i class="fa-solid fa-user-pen"></i></label>
+                  <h3 class="lables">Uid <i onclick="copyUid()" class="fa-solid fa-copy"></i></h3>
+                  <div class="userManage">
+                    <label onclick="signInPage()" for=""><i class="fa-solid fa-user-plus"></i></label>
+                    <label onclick="openNavForEditingProfile()" for=""><i class="fa-solid fa-user-pen"></i></label>
                   </div>
                 </div>
 
@@ -89,7 +89,7 @@
                 <div class="obj"></div>
 
                     <h2 class="goingThrough1">
-                       Loading Data
+                      
                     </h2>
 
               </div>

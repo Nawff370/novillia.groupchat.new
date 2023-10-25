@@ -10,10 +10,14 @@
     document.getElementById("myNavForEditingProfile").style.display = "none";
   }
 
+  var accountUid = ""
 
+  function copyUid() {
+    navigator.clipboard.writeText(accountUid)
+  }
   
 
-const firebaseConfig = {
+  const firebaseConfig = {
 
     apiKey: "AIzaSyBy80iYyXzTB_FodMshSHEK_jsphsMMb-M",
     authDomain: "novilia2023-aac9d.firebaseapp.com",
@@ -81,8 +85,6 @@ const firebaseConfig = {
               var userProfile = userData.profile
               var userTheme = userData.theme
 
-              
-
               document.querySelector(".topnav a.split").style.display = "none"
               document.querySelector(".accountInfo").style.display = "inline"
 
@@ -91,8 +93,8 @@ const firebaseConfig = {
               document.querySelector(".accountInfo").style.backgroundImage = `url(${userProfile})`
               document.querySelector(".accProfile").src = userProfile
               document.querySelector(".profilePicture").src = userProfile
-              document.querySelector(".accUid").textContent = userUid
-
+             
+              accountUid = userUid
               document.querySelector(".inputsPE1").placeholder = userName + " (current nametag)"
 
               document.getElementById("waitingScreen").style.display = "none"

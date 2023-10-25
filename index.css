@@ -9,16 +9,20 @@ body {
   font-family: Arial;
   margin: 0;
   overflow-x: hidden;
+  min-width: 60%;
 }
 
 html {
-  background-color: rgb(178, 109, 199);
+  background-image: url(https://images4.alphacoders.com/133/1332018.png);
   margin: 0;
   padding: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .main-heading-back {
-  background-color: rgb(174, 44, 214);
+  background: transparent;
+  backdrop-filter: blur(5px);
   padding-right: 10px;
   padding: 20px 10px 4px;
   width: auto;
@@ -27,7 +31,10 @@ html {
 .main-heading {
   color: rgb(250, 250, 250);
   font-size: 60px;
-  margin: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
   letter-spacing: 3px;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -106,15 +113,16 @@ html {
 
   #AccountInfoDropdown {
     display: none;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     min-width: auto;
     min-height: auto;
-    border: 3px sloid rgb(105, 101, 101);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     color: black;
     float: right;
     border-radius: 20px;
     padding: 20px;
+
   }
 
   .accProfile {
@@ -149,16 +157,26 @@ html {
     margin-top: 10px;
   }
 
-  .userManage {
-    margin-top: 10px;
-    display: inline;
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 10px;
+  .lables i {
+    color: black;
     cursor: pointer;
+    margin-left: 3px;
+  }
+
+  .userManage {
+    margin-top: 20px;
+    width: 50%;
+    color: rgb(255, 255, 255);
+    padding: 10px;
     text-align: center;
-    
+    background-color: rgb(0, 0, 0, 0.9);
+    border-radius: 20px;
+  }
+
+  .userManage i {
+    margin-left: 9px;
+    margin-right: 9px;
+    cursor: pointer;
   }
 
   .overlayProfileSetting {
@@ -170,14 +188,15 @@ html {
     top: 0;
     left: 0;
     background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
   }
   
   .boxPE {
     width: 70%; 
     height: 1000px;
     height: auto; 
-    background-color: #ffffff;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
     position: fixed;
     top: 50%; 
     left: 50%; 
@@ -197,6 +216,7 @@ html {
     border-radius: 50%;
     border: 2px solid rgb(97, 97, 97);
     margin-bottom: 10px;
+    margin-top: 5px;
     position: relative; 
     transition: opacity 0.5s;
   }
@@ -286,48 +306,49 @@ html {
     outline: none;
     color: black;
     border-radius: 4px;
-    border: 5px solid rgb(50, 212, 50);
+    border: 5px rgb(50, 212, 50);
     padding: 12 40px;
     border-radius: 13px;
     min-width: 100%;
     display: none;
+    margin-bottom: 7px;
+    cursor: pointer;
   }
 
-  .submitButton:hover {
-    cursor: pointer;
-    padding: 16 44px;
-  }
 
   .submitButtonDecoy {
     margin-top: 10px;
-    background-color: rgb(109, 119, 109);
+    background-color: rgb(250, 1, 1);
     outline: none;
     color: black;
     border-radius: 4px;
-    border: 5px solid rgb(109, 119, 109);
+    border: 5px rgb(255, 0, 0);
     padding: 12 40px;
     border-radius: 13px;
     display: none;
     min-width: 100%;
+    margin-bottom: 7px;
   }
 
   .alert1 {
-    color: rgb(43, 71, 230);
+    color: rgb(255, 0, 0);
     font-size: 13px;
-    margin: 0;
+    margin-bottom: 2px;
     display: none;
   }
 
   .alert2 {
-    color: rgb(43, 71, 230);
+    color: rgb(255, 0, 0);
     font-size: 13px;
     display: none;
+    margin-bottom: 2px;
   }
 
   .alert3 {
-    color: rgb(43, 71, 230);
+    color: rgb(255, 0, 0);
     font-size: 13px;
     display: none;
+    margin-bottom: 2px;
   }
   
   .overlayProfileSetting a {
@@ -452,107 +473,159 @@ html {
   display: none;
 }
 
+@media screen and (max-width: 1300px) {
 
-/* Your existing CSS styles here */
+  html {
+    background-size: 2000px;
+  }
+
+}
+
 
 @media screen and (max-width: 768px) {
-  /* Media queries for screens with a maximum width of 768px (typical for phones) */
-  
+
+  html {
+    background-size: 2500px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
   .main-heading {
-      font-size: 2rem; /* Reduce the font size of the main heading */
-      margin: 1rem 0; /* Adjust the margins */
-  }
-
-  .topnav {
-      padding: 10px; /* Reduce the padding to make the navigation bar more compact */
-  }
-
-  .topnav a {
-      font-size: 14px; /* Adjust the font size of navigation links */
-      margin-top: 4px; /* Adjust the top margin for navigation links */
-  }
-
-  .topnav a.split {
-      margin-right: 5px; /* Increase the margin for the split link */
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .accountInfo {
-      width: 30px; /* Reduce the size of the account info icon */
-      height: 30px; /* Reduce the size of the account info icon */
-      margin-right: 5px; /* Adjust the margin for the account info icon */
+    transform: translate(80%,-250%);
+    position: fixed;
   }
 
-  #AccountInfoDropdown {
-      min-width: 80%; /* Adjust the minimum width of the account info dropdown */
-      padding: 10px; /* Adjust the padding for the account info dropdown */
-  }
-
-  .accName,
-  .accEmail,
-  .accUid {
-      font-size: 14px; /* Adjust the font size for account info text */
-      margin-top: 5px; /* Adjust the top margin for account info text */
-  }
-
-  .lables {
-      font-size: 12px; /* Adjust the font size for labels */
-      margin-top: 10px; /* Adjust the top margin for labels */
-  }
-
-  .userManage {
-      width: 45%; /* Adjust the width of user management buttons */
-      padding: 8px; /* Adjust the padding for user management buttons */
-  }
-
-  .profilePicture {
-      width: 70px; /* Adjust the size of the profile picture */
-      height: 70px; /* Adjust the size of the profile picture */
-  }
-
-  .inputsPE1,
-  .inputsPE2,
-  .inputsPE3 {
-      padding: 10px; /* Adjust the padding for input fields */
-  }
-
-  .checkmark1,
-  .checkmark2,
-  .checkmark3 {
-      right: 8px; /* Adjust the position of checkmarks */
-  }
-
-  .submitButton,
-  .submitButtonDecoy {
-      display: block; /* Display the submit button */
-      width: 100%; /* Set the width to 100% for full width */
-      padding: 12px 0; /* Adjust the padding for the button */
-  }
-
-  .alert1,
-  .alert2,
-  .alert3 {
-      display: block; /* Display the alerts */
-  }
-
-  .overlayProfileSetting a {
-      font-size: 24px; /* Adjust the font size for overlay links */
-  }
-
-  .overlayProfileSetting .closebtn {
-      font-size: 40px; /* Adjust the font size for the close button */
-      top: 15px; /* Adjust the top position for the close button */
-      right: 35px; /* Adjust the right position for the close button */
-  }
-
-  .overlay a {
-      font-size: 24px; /* Adjust the font size for overlay links */
-  }
-
-  .overlay .closebtn {
-      font-size: 40px; /* Adjust the font size for the close button */
-      top: 15px; /* Adjust the top position for the close button */
-      right: 35px; /* Adjust the right position for the close button */
-  }
 }
 
-/* End of media queries for smaller screens */
+@media screen and (max-width: 400px) {
+
+  .main-heading {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .accountInfo {
+    transform: translate(80%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 380px) {
+
+  .main-heading {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .accountInfo {
+    transform: translate(20%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+
+  .main-heading {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .accountInfo {
+    transform: translate(0%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+
+  .main-heading {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .accountInfo {
+    transform: translate(0%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 350px) {
+
+  .main-heading {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .accountInfo {
+    transform: translate(-20%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 340px) {
+
+  .main-heading {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  .accountInfo {
+    transform: translate(-40%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 340px) {
+
+  .main-heading {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  .accountInfo {
+    transform: translate(-40%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 330px) {
+
+  .main-heading {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .accountInfo {
+    transform: translate(-70%,-250%);
+    position: fixed;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+
+  .main-heading {
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+
+  .accountInfo {
+    transform: translate(-80%,-250%);
+    position: fixed;
+  }
+
+}
