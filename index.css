@@ -165,19 +165,27 @@ html {
 
   .userManage {
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
     color: rgb(255, 255, 255);
     padding: 10px;
-    text-align: center;
-    background-color: rgb(0, 0, 0, 0.9);
     border-radius: 20px;
+    text-align: center;
   }
 
-  .userManage i {
-    margin-left: 9px;
-    margin-right: 9px;
-    cursor: pointer;
+  .userManage1 {
+    float: right;
+    background-color: black;
+    padding: 10px;
+    border-radius: 50%;
   }
+
+  .userManage2 {
+    float: left;
+    background-color: black;
+    padding: 10px;
+    border-radius: 50%;
+  }
+
 
   .overlayProfileSetting {
     height: 1000px;
