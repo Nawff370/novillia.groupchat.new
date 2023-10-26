@@ -3,7 +3,8 @@
         <title>Nolivia</title>
         <link rel="stylesheet" href="./index.css">
         <script src="https://kit.fontawesome.com/548f053cec.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" type="image/x-icon" href="./image/NOVILLIA.png">
     </head>
     <body>
 
@@ -11,23 +12,23 @@
 
             <h2 class="main-heading">
                 Novilia
-            </h2>
+            </h2>       
 
             <div class="topnav"> 
                 <a class="active" href="./index.html">Home</a>
-                <a href="">Releases</a>
-                <a href="">Database</a>
+                <a href="./index.html">Releases</a>
+                <a href="./index.html">Database</a>
                 <a class="split" onclick="signInPage()"><i class="fa-regular fa-user"></i></a>
                 <div id="accountCentre" class="accountInfo" onclick="toggleDropdown()"></div>
               </div>
               <div class="AccountInfoDropdown-content" id="AccountInfoDropdown">
                 <div>
-                  <div class="accProfile"></div>
+                  <div onclick="openNavForFullAccDetails()" class="accProfile"></div>
                   <h3 class="lables">Username</h3>
                   <h2 class="accName"></h2>
                   <h3 class="lables">Email Address</h3>
                   <h2 class="accEmail"></h2>
-                  <h3 class="lables">Uid <i onclick="copyUid()" class="fa-solid fa-copy"></i></h3>
+                  <h3 class="lables">Uid Token<i onclick="copyUid()" class="fa-solid fa-copy"></i></h3>
                   <div class="userManage">
                     <label class="userManage1" onclick="signInPage()" for=""><i class="fa-solid fa-user-plus"></i></label>
                     <label class="userManage2" onclick="openNavForEditingProfile()" for=""><i class="fa-solid fa-user-pen"></i></label>
@@ -76,6 +77,25 @@
               </form>
             </div>
           </div>
+
+
+
+          <div id="myNavForFullAccDetails" class="overlayAccDetails">
+            <a href="javascript:void(0)" class="closebtnAD" onclick="closeNavForFullAccDetails()">&times;</a>
+            <div class="overlayAccDetails-content">
+              <h5>Email Address</h5>
+              <h4 id="emailAddressAD"></h4>
+              <h5>Username</h5>
+              <h4 id="usernameAD"></h4>
+              <h5>Date Created</h5>
+              <h4 id="dateCreatedAD"></h4>
+              <h5>Uid ( Secret Key )</h5>
+              <h4 class="keyManageClass" id="secretKeyAD"><i onclick="copyUid()" class="fa-solid fa-copy"></i></h4>
+            </div>
+          </div>
+
+
+
 
           <div id="waitingScreen" class="overlay">
             <div class="loading">

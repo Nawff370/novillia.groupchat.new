@@ -272,7 +272,7 @@ function submitSignIn(e) {
             var currentdate = new Date()
             var date = currentdate.toLocaleString()
 
-            var dateOfCreation = date.replace(/\//g, 'NN').replace(/:/g, 'NN').replace(/,/g, '');
+            var dateOfCreation = date.replace(/\//g, 'NN').replace(/:/g, 'CC').replace(/,/g, '');
             
             async function generateUID(email, password) {
               const encoder = new TextEncoder();
@@ -449,7 +449,92 @@ function submitFormForLogin(e) {
 }
 
 
+
   
+document.getElementById('uidLoginForm').addEventListener('submit', submitFormForUid);
 
 
+function submitFormForUid(e) {
+
+  e.preventDefault()
+
+  var database = firebase.database()
+
+  var uid = document.getElementById('uidlogin').value
+  
+    var usersRef = database.ref('users/')
+    usersRef.once('value', function(snapshot) {
+      
+      snapshot.forEach(function(userSnapshot) {
+        var userData = userSnapshot.val()
+        var userEmail = userData.email
+        var userName = userData.name
+        var userPassword = userData.password
+        var userProfile = userData.profile
+        var userDOC = userData.doc
+        var userUid = userData.uid
+        var userProfile = userData.profile
+        var userTheme = userData.theme
+        
+        var uids = []
+        uids.push(userUid)
+        var userUid1 = uids[0]
+
+        if (userUid1==uid) {
+
+
+          fetch('https://api.ipify.org?format=json')
+         .then(response => response.json())
+         .then(data => {
+
+
+          // Formatting ip
+          const formattedIP = data.ip
+          const replacement = "3202"
+          const ipAddress = formattedIP.split('.').join(replacement)
+         
+          var newIpForm = firebase.database().ref('savedLocationData/' + ipAddress)
+
+          newIpForm.set({
+            name: userName,
+            email: userEmail,
+            password: userPassword,
+            theme: "default",
+            doc: userDOC,
+            uid: userUid,
+            profile: userProfile
+          })
+
+          // open nav
+          
+
+          setTimeout(function() {
+            document.querySelector(".goingThrough12").style.display = "none"
+
+            document.querySelector(".goingThrough22").style.display = "inline"
+            logInNow()
+
+            setTimeout(function() {
+
+              document.getElementById("myNavForLogin").style.display = "none"
+              window.location.href = "../index.html" // to home
+            }, 2000)
+
+          }, 4000)
+
+        })
+
+        .catch(error => {
+          console.error(error);
+        })
+          
+        }
+
+
+      })
+
+    })
+    
+
+}
 

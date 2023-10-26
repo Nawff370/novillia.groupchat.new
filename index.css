@@ -13,7 +13,7 @@ body {
 }
 
 html {
-  background-image: url(https://images4.alphacoders.com/133/1332018.png);
+  background-image: url(https://images6.alphacoders.com/133/1330094.png);
   margin: 0;
   padding: 0;
   background-size: 100%;
@@ -135,6 +135,13 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition-duration: 0.7s;
+
+  }
+
+  .accProfile:hover {
+    opacity: 0.5;
+    cursor: pointer;
   }
 
   .accName {
@@ -194,7 +201,6 @@ html {
     cursor: pointer;
   }
 
-
   .overlayProfileSetting {
     height: 1000px;
     width: 100%;
@@ -206,7 +212,7 @@ html {
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.6);
   }
-  
+
   .boxPE {
     width: 70%; 
     height: 1000px;
@@ -386,6 +392,7 @@ html {
     color: #f1f1f1;
   }
   
+  
   .overlayProfileSetting .closebtn {
     position: absolute;
     top: 20px;
@@ -495,52 +502,66 @@ html {
   display: none;
 }
 
-.popupPerm {
+.overlayAccDetails {
+  height: 80%;
+  width: 60%;
+  border-radius: 20px;
   display: none;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
-
-.popus-contentAP p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  height: 40px;
-  align-items: center;
-  color: white;
+  z-index: 1;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 249, 249, 0.6);
+  backdrop-filter: blur(5px);
 }
 
-.allowAPbutton {
+
+.overlayAccDetails .closebtnAD {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,20%);
-  align-items: center;
-  color: #000000;
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
+  top: 25px;
+  right: 50px;
+  font-size: 38px;
+  padding: 8px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-.popus-contentAP {
-  background-color: white;
+.overlayAccDetails a:hover, .overlayAccDetails a:focus {
+  color: #f1f1f1;
 }
 
+.overlayAccDetails-content {
+  display: block;
+  word-wrap: break-word; 
+  text-align: center;
+  transform: translate(-1.5%,50%);
+}
 
+.overlayAccDetails-content h5 {
+  color: black;
+  font-size: 16;
+  margin-left: 20px;
+  margin-top: 10px;
+}
 
+.overlayAccDetails-content h4 {
+  color: rgb(248, 5, 5);
+  font-size: 16;
+  margin-left: 20px;
+}
 
-
-
-
+@media screen and (max-height: 450px) {
+  .overlayAccDetails a {font-size: 20px}
+  .overlayAccDetails .closebtnAD {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
 
 
 
@@ -556,6 +577,31 @@ html {
 
 }
 
+@media screen and (max-width: 870px) {
+
+  .overlayAccDetails{
+    width: 80%;
+  }
+
+}
+
+@media screen and (max-width: 460px) {
+
+  .overlayAccDetails{
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 408px) {
+
+  .overlayAccDetails{
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+}
 
 @media screen and (max-width: 768px) {
 

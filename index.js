@@ -104,6 +104,17 @@
 
               document.getElementById("waitingScreen").style.display = "none" 
 
+              document.getElementById("emailAddressAD").textContent = userEmail
+              document.getElementById("usernameAD").textContent = userName
+
+              var dateOfCreation = userDOC.replace(/NN/g, '\/').replace(/CC/g, ':')
+
+
+              document.getElementById("dateCreatedAD").textContent = dateOfCreation
+
+              
+              document.getElementById("secretKeyAD").textContent = userUid
+
 
           } else {
             document.querySelector(".topnav a.split").style.display = "inline"
@@ -128,6 +139,7 @@
         dropdown.style.display = "none";
     } else {
         dropdown.style.display = "block";
+        document.querySelector(".overlayAccDetails").style.display = "none"
     }
    }
 
@@ -397,9 +409,29 @@
       })
   }
 
+
+
+
+  function closeNavForFullAccDetails() {
+
+    document.querySelector(".overlayAccDetails").style.display = "none"
+
+  }
+
+  function openNavForFullAccDetails() {
+
+    document.querySelector(".overlayAccDetails").style.display = "block"
+    
+  }
   
 
-  
+  function wallpaperSelection() {
+    var wallpapers = [
+      "https://images4.alphacoders.com/133/1332018.png", // Anime girl sunset
+      "https://images3.alphacoders.com/133/1331008.png", // Anime girl bedroom
+      "https://images6.alphacoders.com/133/1330094.png", // Landscape blue sky
+    ]
+  }
 
 
   
