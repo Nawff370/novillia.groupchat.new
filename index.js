@@ -201,6 +201,7 @@
                     var reader = new FileReader();
                     reader.readAsDataURL(file); // this is reading as data url
                  
+                    if (file) {
                     // here we tell the reader what to do when it's done reading...
                     reader.onload = readerEvent => {
                        var content = readerEvent.target.result; // this is the content!      
@@ -248,6 +249,7 @@
                       } else {}
                      })
                    }
+                  }
                  
                  }
 
