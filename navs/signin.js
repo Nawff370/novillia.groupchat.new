@@ -296,15 +296,15 @@ function submitSignIn(e) {
             document.getElementById('nameLogin').value = nameOfUser
             document.getElementById('passLogin').value = pass
 
+            
+            // open nav
+            document.getElementById("myNavForSignIn").style.display = "block";
+
             document.getElementById('name').value = ""
             document.getElementById('email').value = ""
             document.getElementById('password').value = ""
             document.getElementById('passwordcm').value = ""
             document.getElementById("agreeCheck").checked = false
-
-            
-            // open nav
-            document.getElementById("myNavForSignIn").style.display = "block";
 
             setTimeout(function() {
               document.querySelector(".goingThrough1").style.display = "none"
@@ -481,6 +481,13 @@ function submitFormForUid(e) {
         var userUid1 = uids[0]
 
         if (userUid1==uid) {
+          document.getElementById("myNavForLogin").style.display = "block"
+          setTimeout(function() {
+            document.querySelector(".goingThrough12").style.display = "none"
+
+            document.querySelector(".goingThrough22").style.display = "inline"         
+
+          }, 4000)
 
 
           fetch('https://api.ipify.org?format=json')
@@ -509,18 +516,10 @@ function submitFormForUid(e) {
           
 
           setTimeout(function() {
-            document.querySelector(".goingThrough12").style.display = "none"
 
-            document.querySelector(".goingThrough22").style.display = "inline"
-            logInNow()
-
-            setTimeout(function() {
-
-              document.getElementById("myNavForLogin").style.display = "none"
-              window.location.href = "../index.html" // to home
-            }, 2000)
-
-          }, 4000)
+            document.getElementById("myNavForLogin").style.display = "none"
+            window.location.href = "../index.html" // to home
+          }, 2000)
 
         })
 
@@ -528,6 +527,9 @@ function submitFormForUid(e) {
           console.error(error);
         })
           
+        } else {
+          document.querySelector(".alert9").style.display = "block"
+
         }
 
 
