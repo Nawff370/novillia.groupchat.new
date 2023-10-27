@@ -203,7 +203,8 @@
                  
                     // here we tell the reader what to do when it's done reading...
                     reader.onload = readerEvent => {
-                       var content = readerEvent.target.result; // this is the content!                    
+                       var content = readerEvent.target.result; // this is the content!      
+                       document.getElementById("waitingScreen").style.display = "block"              
 
                       var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
                       ipAddressRef.once('value', function(snapshot) {
@@ -238,6 +239,7 @@
                          realDatabase.update({
                           profile: content
                          })
+                         document.getElementById("waitingScreen").style.display = "none"
 
 
                         } else {}
