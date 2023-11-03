@@ -15,7 +15,6 @@
   document.querySelector(".homePageView").style.display = "block"
   document.querySelector(".postPageView").style.display = "none"
   document.querySelector(".chatPageView").style.display = "none"
-
   document.querySelector(".loginToUse").style.display = "none"
   
   // Active Selection
@@ -684,7 +683,48 @@ function addPost() {
 
 postsRef.on('child_added', (snapshot) => {
   const post = snapshot.val()
-  const postElement = createPostElement(post.text, post.timestamp, post.avatar, post.username)
+
+  var currentDate = Date.now()
+  var targetDate = new Date(post.timestamp)
+  var timeDifference = currentDate - targetDate;
+  var daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+
+  if (daysAgo === 0) {
+   var dateAndTime = "today " + targetDate.toLocaleString()
+  } else if (daysAgo === 1) {
+    var dateAndTime = "yesterday " + targetDate.toLocaleString()
+  } else if (daysAgo === 2) {
+    var dateAndTime = "2 days ago " + targetDate.toLocaleString()
+  } else if (daysAgo === 3) {
+    var dateAndTime = "3 days ago " + targetDate.toLocaleString()
+  } else if (daysAgo === 4) {
+    var dateAndTime = "4 days ago " + targetDate.toLocaleString()
+  } else if (daysAgo === 5) {
+    var dateAndTime = "5 days ago " + targetDate.toLocaleString()
+  } else if (daysAgo === 6) {
+    var dateAndTime = "6 days ago " + targetDate.toLocaleString()
+  } else if (daysAgo === 7) {
+    var dateAndTime = "1 week ago "
+   } else if (daysAgo === 8) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo === 9) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo === 10) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo === 11) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo === 12) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo === 13) {
+  var dateAndTime = "1 week ago "
+  } else if (daysAgo < 14) {
+  var dateAndTime = "2 week ago "
+  } else if (daysAgo < 21) {
+  var dateAndTime = "very long time ago"
+  }
+
+
+  const postElement = createPostElement(post.text, dateAndTime, post.avatar, post.username)
   postsContainer.prepend(postElement)
 }) 
 
@@ -699,7 +739,7 @@ function createPostElement(text, timestamp, avatar, username) {
     </header>
     <p class="post-text">${text}</p>
     <section>
-      <h5 class="timestamp">${new Date(timestamp).toLocaleString()}</h5>
+      <h5 class="timestamp">${timestamp}</h5>
     </section>
   `;
 
