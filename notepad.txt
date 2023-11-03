@@ -1,0 +1,50 @@
+
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file); 
+
+                        reader.onload = readerEvent => {
+                        var content = readerEvent.target.result;    
+                        document.getElementById("waitingScreen").style.display = "block"              
+
+                        var ipAddressRef = database.ref('savedLocationData/' + ipAddress)
+                        ipAddressRef.once('value', function(snapshot) {
+                        if (snapshot.exists()) {
+                        var userData = snapshot.val()
+                        var userEmail = userData.email
+                        var userName = userData.name
+                        var userPassword = userData.password
+                        var userProfile = userData.profile
+                        var userDOC = userData.doc
+                        var userUid = userData.uid
+                        var userProfile = userData.profile
+                        var userTheme = userData.theme
+
+                        ipAddressRef.update({
+                         profile: content
+                        })
+
+                         var realDatabase = database.ref('users/' + userName)
+                         realDatabase.once('value', function(snapshot) {
+                          if (snapshot.exists()) {
+                          var userData = snapshot.val()
+                          var userEmail = userData.email
+                          var userName = userData.name
+                          var userPassword = userData.password
+                          var userProfile = userData.profile
+                          var userDOC = userData.doc
+                          var userUid = userData.uid
+                          var userProfile = userData.profile
+                          var userTheme = userData.theme
+
+                          realDatabase.update({
+                           profile: content
+                          })
+                          document.getElementById("waitingScreen").style.display = "none"
+
+
+                         } else {}
+                        })
+
+                       } else {}
+                      })
+                    }

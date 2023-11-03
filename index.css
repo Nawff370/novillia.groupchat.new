@@ -16,7 +16,8 @@ html {
   background-image: url(https://images6.alphacoders.com/133/1330094.png);
   margin: 0;
   padding: 0;
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -73,6 +74,7 @@ html {
     color: rgb(7, 240, 228);
     text-decoration: none;
     transition-duration: 0.3s;
+    cursor: pointer;
   }
   
   /* Create a right-aligned (split) link inside the navigation bar */
@@ -120,10 +122,11 @@ html {
     min-height: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     color: black;
-    float: right;
     border-radius: 20px;
     padding: 20px;
-
+    position: fixed; 
+    top: 210px; 
+    right: 8px;
   }
 
   .accProfile {
@@ -209,22 +212,23 @@ html {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .boxPE {
     width: 70%; 
     height: 1000px;
     height: auto; 
-    background-color: transparent;
-    backdrop-filter: blur(20px);
+    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 249, 249, 0.5);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%);
     border-radius: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.178);
+    border: 3px solid rgb(255, 255, 255);
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -260,8 +264,9 @@ html {
     margin: 15px 0;
     display: block;
     color: rgb(255, 246, 246);
-    background-color: #000000;
-    border: 5px solid black;
+    background-color: #00000094;
+    border: 2px solid black;
+    padding: 15px;
     border-radius: 4px;
     border-radius: 20px;
     text-decoration: none;
@@ -274,8 +279,9 @@ html {
     margin: 15px 0;
     display: block;
     color: rgb(255, 246, 246);
-    background-color: #000000;
-    border: 5px solid black;
+    background-color: #00000094;
+    border: 2px solid black;
+    padding: 15px;
     border-radius: 4px;
     border-radius: 20px;
     text-decoration: none;
@@ -289,8 +295,9 @@ html {
     margin: 15px 0;
     display: block;
     color: rgb(255, 246, 246);
-    background-color: #000000;
-    border: 5px solid black;
+    background-color: #00000094;
+    border: 2px solid black;
+    padding: 15px;
     border-radius: 4px;
     border-radius: 20px;
     text-decoration: none;
@@ -505,7 +512,7 @@ html {
 .overlayAccDetails {
   height: 80%;
   width: 60%;
-  border-radius: 20px;
+  border-radius: 45px;
   display: none;
   position: absolute;
   top: 50%;
@@ -515,13 +522,14 @@ html {
   background-color: rgb(255, 255, 255);
   background-color: rgba(255, 249, 249, 0.6);
   backdrop-filter: blur(5px);
+  overflow: auto;
 }
 
 
 .overlayAccDetails .closebtnAD {
   position: absolute;
-  top: 25px;
-  right: 50px;
+  right: 30px;
+  top: 20px;
   font-size: 38px;
   padding: 8px;
   text-decoration: none;
@@ -531,14 +539,62 @@ html {
 }
 
 .overlayAccDetails a:hover, .overlayAccDetails a:focus {
-  color: #f1f1f1;
+  color: #131212;
 }
+
+.prfcontainer {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: rgb(3, 3, 3, 0.2);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  width: auto;
+  transition-duration: 0.5s;
+  padding: 2px;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.prfcontainer div {
+  background-image: url(./image/Untitled.png);
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  scale: 1.1;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.prfcontainer p {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  scale: 1.1;
+}
+
+
 
 .overlayAccDetails-content {
   display: block;
   word-wrap: break-word; 
   text-align: center;
-  transform: translate(-1.5%,50%);
+  height: 100%;
+  transform: translate(0%,0%);
+  background-color: rgb(3, 3, 3, 0.2);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-top: 0;
 }
 
 .overlayAccDetails-content h5 {
@@ -554,25 +610,158 @@ html {
   margin-left: 20px;
 }
 
-@media screen and (max-height: 450px) {
-  .overlayAccDetails a {font-size: 20px}
-  .overlayAccDetails .closebtnAD {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
+.homePageView {
+  display: none;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 249, 249, 0.6);
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-position: center;
+  padding: 15px;
+  height: 50%;
+  width: 50%;
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.postPageView {
+  display: none;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 249, 249, 0.6);
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-position: center;
+  padding: 15px;
+  height: min-content;
+  width: auto;
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.chatPageView {
+  display: none;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 249, 249, 0.6);
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-position: center;
+  padding: 15px;
+  height: 50%;
+  width: 50%;
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.postcontainer {
+  background-color: transparent;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.post-form {
+  margin-top: 20px;
+}
+
+.post-form input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.post-form button {
+  padding: 10px 20px;
+  background-color: #125688;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.posts {
+  margin-top: 20px;
+}
+
+.postPT {
+  background-color: #fff;
+  margin: 10px 0;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex; 
+  align-items: center; 
+}
+
+.postPT header {
+  display: flex;
+  align-items: center;
+  flex: 1; 
+}
+
+.postPT .avatar {
+  background-image: url(./image/Untitled.png);
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+.postPT .username {
+  margin-left: 8px;
+}
+
+.postPT .post-text {
+  margin: 0;
+  flex: 3; 
+  font-size: 13px;
+}
+
+.postPT section {
+  flex: 1; 
+  text-align: right; 
+}
+
+.postPT section .timestamp {
+  color: #888;
 }
 
 
+.loginToUse {
+  display: none;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 249, 249, 0.6);
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-position: center;
+  padding: 15px;
+  height: 50%;
+  width: 50%;
+  word-wrap: break-word; 
+  text-align: center;
+}
 
+.loginToUse h3 {
+  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.6);
 
-
+}
 
 
 @media screen and (max-width: 1300px) {
 
   html {
-    background-size: 2000px;
+    background-size: auto;
   }
 
 }
@@ -585,10 +774,91 @@ html {
 
 }
 
+@media screen and (max-width: 860px) {
+
+  .postPageView {
+    width: auto;
+  }
+
+}
+
+@media screen and (max-width: 860px) {
+
+  .postPageView {
+    width: auto;
+  }
+
+}
+
+@media screen and (max-width: 566px) {
+
+  .postPageView {
+    width: auto;
+  }
+
+
+}
+
 @media screen and (max-width: 460px) {
 
   .overlayAccDetails{
     width: 90%;
+  }
+
+}
+@media screen and (max-width: 452px) {
+
+  .postPT{
+    width: 95%;
+  }
+
+  .post-form input[type="text"] {
+   width: 60%;
+   float: left;
+   margin-bottom: 20px;
+  }
+
+  .post-form button {
+    float: left;
+    margin-left: 25px;
+   }
+
+}
+
+@media screen and (max-width: 432px) {
+
+  .postPT{
+    width: 94%;
+    margin-left: 0;
+  }
+
+  .postPageView {
+    padding-left: 5px;
+  }
+ 
+
+}
+
+@media screen and (max-width: 426px) {
+
+  .postPT{
+    width: 93%;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+
+  .postPT{
+    width: 92%;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+
+  .postPageView {
+    width: auto;
   }
 
 }
@@ -618,11 +888,6 @@ html {
     margin-right: 10px;
   }
 
-  .accountInfo {
-    transform: translate(80%,-250%);
-    position: fixed;
-  }
-
 }
 
 @media screen and (max-width: 400px) {
@@ -630,11 +895,6 @@ html {
   .main-heading {
     margin-left: 10px;
     margin-right: 10px;
-  }
-
-  .accountInfo {
-    transform: translate(80%,-250%);
-    position: fixed;
   }
 
 }
@@ -646,10 +906,15 @@ html {
     margin-right: 10px;
   }
 
-  .accountInfo {
-    transform: translate(20%,-250%);
-    position: fixed;
+}
+
+@media screen and (max-width: 360px) {
+
+  .main-heading {
+    margin-left: 10px;
+    margin-right: 10px;
   }
+
 
 }
 
@@ -660,24 +925,6 @@ html {
     margin-right: 10px;
   }
 
-  .accountInfo {
-    transform: translate(0%,-250%);
-    position: fixed;
-  }
-
-}
-
-@media screen and (max-width: 360px) {
-
-  .main-heading {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .accountInfo {
-    transform: translate(0%,-250%);
-    position: fixed;
-  }
 
 }
 
@@ -688,10 +935,6 @@ html {
     margin-right: 8px;
   }
 
-  .accountInfo {
-    transform: translate(-20%,-250%);
-    position: fixed;
-  }
 
 }
 
@@ -702,10 +945,6 @@ html {
     margin-right: 6px;
   }
 
-  .accountInfo {
-    transform: translate(-40%,-250%);
-    position: fixed;
-  }
 
 }
 
@@ -714,11 +953,6 @@ html {
   .main-heading {
     margin-left: 6px;
     margin-right: 6px;
-  }
-
-  .accountInfo {
-    transform: translate(-40%,-250%);
-    position: fixed;
   }
 
 }
@@ -730,11 +964,6 @@ html {
     margin-right: 4px;
   }
 
-  .accountInfo {
-    transform: translate(-70%,-250%);
-    position: fixed;
-  }
-
 }
 
 @media screen and (max-width: 320px) {
@@ -742,11 +971,6 @@ html {
   .main-heading {
     margin-left: 1px;
     margin-right: 1px;
-  }
-
-  .accountInfo {
-    transform: translate(-80%,-250%);
-    position: fixed;
   }
 
 }

@@ -1,4 +1,3 @@
-
 document.querySelector(".topnav a.split").style.display = "none"
 
 function signInNow() {
@@ -39,25 +38,21 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
-// Reference to the form
 const form = document.getElementById('signInForm')
 
-// Authenticate
 const auth = firebase.auth()
 
-// Your UID - Replace with your actual UID
 const yourUID = 'FiwC4nP0I3MprP3SMuQnDNwd3ea2'
 
-// Sign in with email and password
 auth.signInWithEmailAndPassword('nawfunnygamer@gmail.com', 'nawfisfunny123@').catch(function(error) {
-  // Handle errors if any
   console.error('Sign-in error:', error)
-});
 
+})
 
   window.onload = function() {
     signInMain()
     loginMain()
+    mainDetailsCheck()
 
     setInterval(function() {
       signInMain()
@@ -67,8 +62,36 @@ auth.signInWithEmailAndPassword('nawfunnygamer@gmail.com', 'nawfisfunny123@').ca
       loginMain()
     }, 1000)
 
+    setInterval(function() {
+      mainDetailsCheck()
+    }, 1000)
+
+
   }
 
+  var loginDetailsWritten = ""
+  var signinDetailsWritten = ""
+
+
+  function mainDetailsCheck() {
+
+    if (loginDetailsWritten==1) {
+      window.onbeforeunload = function() {
+       return "login details not saved, leave page?"
+      }
+
+    } else if (signinDetailsWritten==1) {
+      window.onbeforeunload = function() {
+       return "signin details not saved, leave page?"
+      }
+
+    } else if (signinDetailsWritten==1, loginDetailsWritten==1) {
+      window.onbeforeunload = function() {
+       return "account details are not saved, leave page?"
+      }
+      
+    }
+  }
 
 
 function signInMain() {
@@ -118,6 +141,12 @@ function signInMain() {
         }
       }
     })
+
+    if (!nameOfUser=="" || !email=="" || !passcm=="" || !pass=="") {
+     signinDetailsWritten=1
+    } else if ((nameOfUser=="" || email=="" || passcm=="" || pass=="")) {
+      signinDetailsWritten=0
+    }
 
 
     // Email check to display
@@ -350,6 +379,12 @@ function loginMain() {
   var name = document.getElementById('nameLogin').value
   var password = document.getElementById('passLogin').value
 
+  if (!name=="" || !password=="") {
+    loginDetailsWritten=1
+  } else if (name=="" || password=="") {
+    loginDetailsWritten=0
+  }
+
   if (name=="") {
     document.querySelector(".alert6").style.display = "inline"
   } else {
@@ -373,9 +408,8 @@ function submitFormForLogin(e) {
   var name = document.getElementById('nameLogin').value
   var password = document.getElementById('passLogin').value
 
-  if (name=="" || password=="") {
-    // Handle empty fields if needed
-  } else {
+  if (name=="" || password=="") {} else {
+
     var usersRef = database.ref('users/' + name)
 
     usersRef.once('value', function(snapshot) {
@@ -483,8 +517,8 @@ function submitFormForUid(e) {
         if (userUid1==uid) {
           document.getElementById("myNavForLogin").style.display = "block"
           setTimeout(function() {
-            document.querySelector(".goingThrough12").style.display = "none"
 
+            document.querySelector(".goingThrough12").style.display = "none"
             document.querySelector(".goingThrough22").style.display = "inline"         
 
           }, 4000)

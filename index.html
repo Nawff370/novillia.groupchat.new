@@ -8,6 +8,20 @@
     </head>
     <body>
 
+          <div id="waitingScreen" class="overlay">
+          <div class="loading">
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <h2 class="goingThrough1"></h2>
+          </div>
+          </div>
+
           <div class="main-heading-back">
 
             <h2 class="main-heading">
@@ -15,9 +29,9 @@
             </h2>       
 
             <div class="topnav"> 
-                <a class="active" href="./index.html">Home</a>
-                <a href="./index.html">Releases</a>
-                <a href="./index.html">Database</a>
+                <a id="homePageId" onclick="homeButtonClick()" class="active">Home</a>
+                <a id="postPageId" onclick="postButtonClick()" >Posts</a>
+                <a id="chatPageId" onclick="chatButtonClick()" >Chats</a>
                 <a class="split" onclick="signInPage()"><i class="fa-regular fa-user"></i></a>
                 <div id="accountCentre" class="accountInfo" onclick="toggleDropdown()"></div>
               </div>
@@ -34,7 +48,6 @@
                     <label class="userManage2" onclick="openNavForEditingProfile()" for=""><i class="fa-solid fa-user-pen"></i></label>
                   </div>
                 </div>
-
             </div>
         </div>
 
@@ -43,8 +56,8 @@
             <a href="javascript:void(0)" class="closebtnEP" onclick="closeNavForEditingProfile()">&times;</a>
             <div class="overlayProfileSetting-content">
               <form id="profileEditForm" class="boxPE">
-                 <div class="profilePicCns"><div id="profileImage" class="profilePicture" onclick="chooseNewProfile()"></div></div>
-                  <input onchange="handleFileSelect(event)" accept="image/*" class="profilePickerInput" id="profilePicker" type="file">
+                 <div class="profilePicCns"><div id="profileImage" class="profilePicture"></div></div>
+                  <input accept=".jpg, .png, .jpeg, .svg" class="profilePickerInput" id="profilePicker" type="file">
 
                 
                 <div class="input-container">
@@ -66,9 +79,9 @@
                 </div>
 
                 <div style="text-align: left;">
-                    <div><h4 class="alert1">&#8618; Password is incorrect</h4></div>
-                    <div><h4 class="alert2">&#8618; Your new password must contain a minimum of 8 characters</h4></div>
-                    <div><h4 class="alert3">&#8618; That nametag is already taken</h4></div>
+                    <div><h4 class="alert1">> Password is incorrect</h4></div>
+                    <div><h4 class="alert2">> Your new password must contain a minimum of 8 characters</h4></div>
+                    <div><h4 class="alert3">> That nametag is already taken</h4></div>
                 </div>
 
                 <button class="submitButton" type="submit">Save</button>
@@ -79,9 +92,12 @@
           </div>
 
 
-
           <div id="myNavForFullAccDetails" class="overlayAccDetails">
-            <a href="javascript:void(0)" class="closebtnAD" onclick="closeNavForFullAccDetails()">&times;</a>
+            <div class="prfcontainer">
+              <div></div>
+              <p id="usernameDisplay"></p>
+              <a href="javascript:void(0)" class="closebtnAD" onclick="closeNavForFullAccDetails()">&times;</a>
+            </div>
             <div class="overlayAccDetails-content">
               <h5>Email Address</h5>
               <h4 id="emailAddressAD"></h4>
@@ -95,26 +111,40 @@
           </div>
 
 
+          <section class="homePageView">
+            <div>
+              
+            </div>
+          </section>
 
 
-          <div id="waitingScreen" class="overlay">
-            <div class="loading">
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-                <div class="obj"></div>
-
-                    <h2 class="goingThrough1">
-                      
-                    </h2>
-
+          <section class="postPageView">
+            <div>
+              <div class="postcontainer">
+                <div class="post-form">
+                    <input type="text" id="post-input" placeholder="Add a post...">
+                    <button onclick="addPost()">Post</button>
+                </div>
+                <div class="posts" id="posts-container">
+                    <!-- Posts will be displayed here -->
+                </div>
               </div>
-          </div>
+            </div>
+          </section>
+
+          <section class="chatPageView">
+            <div>
+              
+            </div>
+          </section>
+
           
+          <section class="loginToUse">
+            <h3>
+              Login to view
+            </h3>
+          </section>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
         <script src="./index.js"></script>       
     </body>
