@@ -12,6 +12,20 @@
     document.getElementById("myNavForEditingProfile").style.display = "none";
   }
 
+  document.querySelector(".homePageView").style.display = "block"
+  document.querySelector(".postPageView").style.display = "none"
+  document.querySelector(".chatPageView").style.display = "none"
+
+  document.querySelector(".loginToUse").style.display = "none"
+  
+  // Active Selection
+  var element = document.getElementById('homePageId')
+  element.classList.add('active')
+  var element = document.getElementById('postPageId')
+  element.classList.remove('active')
+  var element = document.getElementById('chatPageId')
+  element.classList.remove('active')
+
   // Configuration
   var logined = ""
 
