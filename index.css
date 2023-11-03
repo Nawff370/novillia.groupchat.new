@@ -13,12 +13,11 @@ body {
 }
 
 html {
-  background-image: url(https://images6.alphacoders.com/133/1330094.png);
+  background-color: rgb(88, 18, 219);
   margin: 0;
   padding: 0;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
 .main-heading-back {
