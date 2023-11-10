@@ -38,6 +38,7 @@
   var accUsername = ""
   var doCheck = 1
 
+
   function copyUid() {
     navigator.clipboard.writeText(accountUid)
   }
@@ -76,29 +77,19 @@
 
   window.onload = function() {
 
-    var intervalCode = ""
-
-     if (doCheck==1) {
       checkSavedData()
       profileEditor()
-      postPage()
-
-      setInterval(function() {
-        checkSavedData()
-      }, 100)
+      chatPageLive()
 
       setInterval(function() {
         intervalCode = profileEditor()
       }, 100)
 
       setInterval(function() {
-        postPage()
+        chatPageLive()
       }, 100)
 
-    } else if (doCheck==0) {
-      clearInterval(intervalCode)
-      
-    }
+ 
 
   }
 
@@ -151,7 +142,7 @@
               avatarUrl = userProfile
               document.getElementById("usernameDisplay").textContent = userName
 
-              accUsername = userName
+              accUsername = userData.name
               logined = "yes"
               theme = userTheme
               ipAddressSecretKey = ipAddress.split('.').join(replacement)
@@ -667,7 +658,16 @@
 var postInput = document.getElementById('post-input')
 var postsContainer = document.getElementById('posts-container')
 
+
+
 function addPost() {
+  const button = document.querySelector(".post-form button")
+  
+  button.classList.add("animate")
+  setTimeout(() => {
+    button.classList.remove("animate")
+  }, 200);
+
    const postText = postInput.value;
    if (postText) {
     const newPostRef = postsRef.push()
@@ -681,75 +681,198 @@ function addPost() {
    }
 }
 
+postInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault()
+    addPost()
+  }
+})
+
+
 postsRef.on('child_added', (snapshot) => {
   const post = snapshot.val()
 
-  var currentDate = Date.now()
-  var targetDate = new Date(post.timestamp)
-  var timeDifference = currentDate - targetDate;
-  var daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+var currentDate = Date.now()
+var targetDate = new Date(post.timestamp)
+var timeDifference = currentDate - targetDate
+var daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+var dateAndTime
 
-  if (daysAgo === 0) {
-   var dateAndTime = "today " + targetDate.toLocaleString()
+if (daysAgo === 0) {
+    var hourDifference = Math.floor(timeDifference / (1000 * 60 * 60))
+    var minutesDifference = Math.floor(timeDifference / (1000 * 60))
+
+    if (hourDifference < 1) {
+        if (minutesDifference > 1) {
+          dateAndTime = minutesDifference + " min ago"
+        } else {
+          dateAndTime = "now"
+        }
+    } else {
+        dateAndTime = hourDifference + " hours ago"
+    }
   } else if (daysAgo === 1) {
-    var dateAndTime = "yesterday " + targetDate.toLocaleString()
-  } else if (daysAgo === 2) {
-    var dateAndTime = "2 days ago " + targetDate.toLocaleString()
-  } else if (daysAgo === 3) {
-    var dateAndTime = "3 days ago " + targetDate.toLocaleString()
-  } else if (daysAgo === 4) {
-    var dateAndTime = "4 days ago " + targetDate.toLocaleString()
-  } else if (daysAgo === 5) {
-    var dateAndTime = "5 days ago " + targetDate.toLocaleString()
-  } else if (daysAgo === 6) {
-    var dateAndTime = "6 days ago " + targetDate.toLocaleString()
-  } else if (daysAgo === 7) {
-    var dateAndTime = "1 week ago "
-   } else if (daysAgo === 8) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo === 9) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo === 10) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo === 11) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo === 12) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo === 13) {
-  var dateAndTime = "1 week ago "
-  } else if (daysAgo < 14) {
-  var dateAndTime = "2 week ago "
-  } else if (daysAgo < 21) {
-  var dateAndTime = "very long time ago"
+    dateAndTime = "yesterday " + targetDate.toLocaleTimeString()
+  } else if (daysAgo >= 2 && daysAgo < 14) {
+    dateAndTime = daysAgo + " days ago"
+  } else if (daysAgo >= 14 && daysAgo < 21) {
+    dateAndTime = "2 weeks ago"
+  } else {
+    dateAndTime = "very long time ago"
   }
 
 
   const postElement = createPostElement(post.text, dateAndTime, post.avatar, post.username)
-  postsContainer.prepend(postElement)
-}) 
+   postsContainer.prepend(postElement)
+  }) 
 
-function createPostElement(text, timestamp, avatar, username) {
-  const postElement = document.createElement('div');
-  postElement.classList.add('postPT'); // Use 'classList.add' to add a class.
+  function createPostElement(text, timestamp, avatar, username) {
+   const postElement = document.createElement('div');
+   postElement.classList.add('containerForSinglePost'); // Use 'classList.add' to add a class.
 
-  postElement.innerHTML = `
+   postElement.innerHTML = `
+   <div class="postPT">
     <header>
-      <div class="avatar" style="background-image: url(${avatar});"></div>
-      <h5 class="username">${username}</h5>
+    <div class="avatar" style="background-image: url(${avatar});"></div>
+    <h5 class="username">${username}</h5>
     </header>
     <p class="post-text">${text}</p>
-    <section>
-      <h5 class="timestamp">${timestamp}</h5>
-    </section>
-  `;
+   </div>
+   <section>
+     <h5 class="timestamp">${timestamp}</h5>
+     </section>
+   `
 
-  return postElement;
-}
+   return postElement;
+   }
 
+  
+   var userChatRef = firebase.database().ref('users/' + accUsername + '/chatData')
+   userChatRef.once('value', function(snap) {
+     if (snap.exists()) {
+       document.querySelector(".createDmButton").style.display = "none"
+     } else {
+       document.querySelector(".createDmButton").style.display = "block"
+       
+     }
+   })
 
-  function postPage() {
-   
-  }
+    function viewDmCreatingPopup() {
+      document.querySelector(".createDMpopup").style.display = "block"
+    }
 
+    function closeDmCreatingPopup() {
+      document.querySelector(".createDMpopup").style.display = "none"
+    }
+
+    function chatPageLive() {
+      var name = document.getElementById("nameFordm").value
+
+      if (name !== "") {
+        if (name === accUsername) {
+          document.querySelector(".alert6").style.display = "block"
+        } else {
+          document.querySelector(".alert6").style.display = "none"
+          var userRef = database.ref('users/' + name);
+    
+          userRef.once('value', function(snapshot) {
+            if (snapshot.exists()) {
+              document.querySelector(".alert4").style.display = "none"
+            } else {
+              document.querySelector(".alert4").style.display = "block"
+            }
+    
+            var userChatRef = database.ref('users/' + accUsername + "/chatData/" + name)
+            userChatRef.once('value', function(snap) {
+              if (snap.exists()) {
+                document.querySelector(".alert5").style.display = "block"
+              } else {
+                document.querySelector(".alert5").style.display = "none"
+              }
+
+            })
+          })
+        }
+      } else {
+        document.querySelector(".alert4").style.display = "none"
+        document.querySelector(".alert5").style.display = "none"
+        document.querySelector(".alert6").style.display = "none"
+      }
+     
+    }
+
+    function createDm() {
+      var name = document.getElementById("nameFordm").value;
+      var database = firebase.database()
+    
+      if (name !== "") {
+        if (name === accUsername) {
+          document.querySelector(".alert6").style.display = "block"
+        } else {
+          document.querySelector(".alert6").style.display = "none"
+          var userRef = database.ref('users/' + name);
+    
+          userRef.once('value', function(snapshot) {
+            if (snapshot.exists()) {
+              document.querySelector(".alert4").style.display = "none"
+              var accExists = "1"
+            } else {
+              document.querySelector(".alert4").style.display = "block"
+              var accExists = "0"
+            }
+    
+            var userChatRef = database.ref('users/' + accUsername + "/chatData/" + name)
+            userChatRef.once('value', function(snap) {
+              if (snap.exists()) {
+                document.querySelector(".alert5").style.display = "block"
+                var accExistsInChat = "1"
+              } else {
+                document.querySelector(".alert5").style.display = "none"
+                var accExistsInChat = "0"
+              }
+    
+              if (accExists === "1" && accExistsInChat === "0") {
+
+                var userRef = database.ref('users/' + name)
+                userRef.once('value', function(snap) {
+                  var userData = snap.val()
+                  var userName = userData.name
+                  var userProfile = userData.profile
+
+                  // My chat for the other use
+                  var newChat1 = database.ref('users/' + accUsername + "/chatData/" + userName)
+
+                  newChat1.set({
+                    name: userName,
+                    profile: userProfile
+                  })
+                  
+
+                  // Their chat for me
+                  var newChat2 = database.ref('users/' + userName + "/chatData/" + accUsername)
+
+                  newChat2.set({
+                    name: accUsername,
+                    profile: avatarUrl
+                  })
+
+                 // var newChatText1 = database.ref('users/' + accUsername + "/chatData/" + userName + "/texts")
+                 // newChatText1.set()
+                  
+                })
+    
+              }
+            })
+          })
+        }
+      } else {
+        // Clear all alerts if the name is empty
+        document.querySelector(".alert4").style.display = "none"
+        document.querySelector(".alert5").style.display = "none"
+        document.querySelector(".alert6").style.display = "none"
+      }
+    }
+    
+    
 
   

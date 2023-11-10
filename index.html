@@ -25,12 +25,12 @@
           <div class="main-heading-back">
 
             <h2 class="main-heading">
-                Novilia
+                NOVILLIA
             </h2>       
 
             <div class="topnav"> 
                 <a id="homePageId" onclick="homeButtonClick()" class="active">Home</a>
-                <a id="postPageId" onclick="postButtonClick()" >Posts</a>
+                <a id="postPageId" onclick="postButtonClick()" >Community</a>
                 <a id="chatPageId" onclick="chatButtonClick()" >Chats</a>
                 <a class="split" onclick="signInPage()"><i class="fa-regular fa-user"></i></a>
                 <div id="accountCentre" class="accountInfo" onclick="toggleDropdown()"></div>
@@ -123,7 +123,7 @@
               <div class="postcontainer">
                 <div class="post-form">
                     <input type="text" id="post-input" placeholder="Add a post...">
-                    <button onclick="addPost()">Post</button>
+                    <button id="postAddButtonID" onclick="addPost()">Post</button>
                 </div>
                 <div class="posts" id="posts-container">
                     <!-- Posts will be displayed here -->
@@ -133,6 +133,7 @@
           </section>
 
           <section class="chatPageView">
+            <div onclick="viewDmCreatingPopup()" class="createDmButton">Message</div>
             <div>
               
             </div>
@@ -144,6 +145,21 @@
               Login to view
             </h3>
           </section>
+
+          <div class="createDMpopup">
+            <a href="javascript:void(0)" class="closebtnDMpopup" onclick="closeDmCreatingPopup()">&times;</a>
+            <div class="firstDiv284">
+              <h5>Name</h5>
+              <input id="nameFordm" type="text"></input>
+              <h4 class="alert4">> user dont exist</h4>
+              <h4 class="alert5">> already exists</h4>
+              <h4 class="alert6">> cant dm urself</h4>
+              <div onclick="createDm()" class="createDm">
+                create Dm
+              </div>
+
+            </div>
+          </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
         <script src="./index.js"></script>       
