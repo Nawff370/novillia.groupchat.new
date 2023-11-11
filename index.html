@@ -46,6 +46,7 @@
                   <div class="userManage">
                     <label class="userManage1" onclick="signInPage()" for=""><i class="fa-solid fa-user-plus"></i></label>
                     <label class="userManage2" onclick="openNavForEditingProfile()" for=""><i class="fa-solid fa-user-pen"></i></label>
+                    <label class="userManage3" onclick="logout()" for=""><i class="fa-solid fa-arrow-right-from-bracket"></i></label>
                   </div>
                 </div>
             </div>
@@ -126,7 +127,7 @@
                     <button id="postAddButtonID" onclick="addPost()">Post</button>
                 </div>
                 <div class="posts" id="posts-container">
-                    <!-- Posts will be displayed here -->
+                    <!-- posts -->
                 </div>
               </div>
             </div>
@@ -135,7 +136,9 @@
           <section class="chatPageView">
             <div onclick="viewDmCreatingPopup()" class="createDmButton">Message</div>
             <div>
-              
+              <div class="dmsContainer" id="dmcontainer">
+
+              </div>
             </div>
           </section>
 

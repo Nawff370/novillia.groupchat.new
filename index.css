@@ -106,7 +106,6 @@ h2.main-heading:hover {
     cursor: pointer;
   }
   
-  /* Create a right-aligned (split) link inside the navigation bar */
   .topnav a.split {
     float: right;
     color: white;
@@ -218,19 +217,41 @@ h2.main-heading:hover {
   }
 
   .userManage1 {
-    float: right;
-    background-color: black;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .userManage2 {
     float: left;
     background-color: black;
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .userManage1:hover {
+    scale: 1.1;
+  }
+
+  .userManage2 {
+    background-color: black;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .userManage2:hover {
+    scale: 1.1;
+  }
+
+  .userManage3 {
+    float: right;
+    background-color: black;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .userManage3:hover {
+    scale: 1.1;
   }
 
   .overlayProfileSetting {
@@ -884,7 +905,7 @@ h2.main-heading:hover {
   top: 50%;
   left: 50%;
   border-radius: 18px;
-  display: none;
+  float: right;
 }
 
 .createDmButton:hover {
@@ -987,6 +1008,39 @@ h2.main-heading:hover {
   cursor: pointer;
 }
 
+.dmsContainer {
+  border-radius: 20px;
+  width: min-content;
+  padding-right: 20px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.dmList {
+  margin-bottom: 2px;
+  border-radius: 40px;
+  font-size: 13px;
+  padding: 10px;
+  display: flex;
+  width: min-content;
+  padding-right: 15px;
+}
+
+.dmAvatar {
+  background-image: url(./image/Untitled.png);
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+.dmList p {
+  color: rgb(0, 0, 0);
+  margin-top: 12px;
+  margin-left: 8px;
+  font-size: 15px;
+}
 
 @media screen and (max-width: 1300px) {
 

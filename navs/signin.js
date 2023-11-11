@@ -315,10 +315,16 @@ function submitSignIn(e) {
               return hexString
             }
 
-            var uid = generateUID(email, pass).then((l)=>{
+            generateUID(email, pass).then((l)=>{
 
               // Creating account
               createNewAccount(nameOfUser, email, pass, l, dateOfCreation)
+
+              var newChat1 = database.ref('usersChatSettings/' + nameOfUser + "ChatSettings")
+
+                  newChat1.set({
+                    set: "yes"
+                  })
             })
 
 

@@ -127,6 +127,7 @@
               document.querySelector(".accountInfo").style.backgroundImage = `url(${userProfile})`
               document.querySelector(".accProfile").style.backgroundImage = `url(${userProfile})`
               document.querySelector(".profilePicture").style.backgroundImage = `url(${userProfile})`
+              document.querySelector(".prfcontainer div").style.backgroundImage = `url(${userProfile})`
              
               accountUid = userUid
               document.querySelector(".inputsPE1").placeholder = userName + " (current nametag)"
@@ -138,7 +139,6 @@
               document.getElementById("dateCreatedAD").textContent = dateOfCreation
               document.getElementById("secretKeyAD").textContent = userUid
 
-              document.querySelector(".prfcontainer div").style.backgroundImage = `url(${userProfile})`
               avatarUrl = userProfile
               document.getElementById("usernameDisplay").textContent = userName
 
@@ -146,6 +146,8 @@
               logined = "yes"
               theme = userTheme
               ipAddressSecretKey = ipAddress.split('.').join(replacement)
+
+              dmAddFromDb()
 
 
           } else {
@@ -275,7 +277,13 @@
                             realDatabase.update({
                              profile: content
                             })
+
                             document.getElementById("waitingScreen").style.display = "none"
+
+                            document.querySelector(".accountInfo").style.backgroundImage = `url(${content})`
+                            document.querySelector(".accProfile").style.backgroundImage = `url(${content})`
+                            document.querySelector(".profilePicture").style.backgroundImage = `url(${content})`
+                            document.querySelector(".prfcontainer div").style.backgroundImage = `url(${content})`
 
 
                            } else {}
@@ -654,7 +662,7 @@
   }
 
 
-  var postsRef = database.ref('posts')
+var postsRef = database.ref('posts')
 var postInput = document.getElementById('post-input')
 var postsContainer = document.getElementById('posts-container')
 
@@ -746,16 +754,7 @@ if (daysAgo === 0) {
    return postElement;
    }
 
-  
-   var userChatRef = firebase.database().ref('users/' + accUsername + '/chatData')
-   userChatRef.once('value', function(snap) {
-     if (snap.exists()) {
-       document.querySelector(".createDmButton").style.display = "none"
-     } else {
-       document.querySelector(".createDmButton").style.display = "block"
-       
-     }
-   })
+
 
     function viewDmCreatingPopup() {
       document.querySelector(".createDMpopup").style.display = "block"
@@ -798,6 +797,21 @@ if (daysAgo === 0) {
         document.querySelector(".alert5").style.display = "none"
         document.querySelector(".alert6").style.display = "none"
       }
+
+      var userChatRef = firebase.database().ref('usersChatSettings/' + accUsername + "ChatSettings")
+      userChatRef.once('value', function(snap) {
+        if (snap.exists()) {
+         var userData = snap.val()
+         var set = userData.set
+           if (set=="yes") {
+             document.querySelector(".dmsContainer").style.display = "block"
+           } else if (set=="no") {
+             document.querySelector(".dmsContainer").style.display = "none"
+           }
+        } else {
+          document.querySelector(".dmsContainer").style.display = "none"
+        }
+      })
      
     }
 
@@ -830,7 +844,7 @@ if (daysAgo === 0) {
                 document.querySelector(".alert5").style.display = "none"
                 var accExistsInChat = "0"
               }
-    
+
               if (accExists === "1" && accExistsInChat === "0") {
 
                 var userRef = database.ref('users/' + name)
@@ -846,6 +860,12 @@ if (daysAgo === 0) {
                     name: userName,
                     profile: userProfile
                   })
+
+                  var newChat1 = database.ref('usersChatSettings/' + accUsername + "ChatSettings")
+
+                  newChat1.set({
+                    set: "yes"
+                  })
                   
 
                   // Their chat for me
@@ -856,8 +876,12 @@ if (daysAgo === 0) {
                     profile: avatarUrl
                   })
 
-                 // var newChatText1 = database.ref('users/' + accUsername + "/chatData/" + userName + "/texts")
-                 // newChatText1.set()
+                  var newChat1 = database.ref('usersChatSettings/' + userName + "ChatSettings")
+
+                  newChat1.set({
+                    set: "yes"
+                  })
+
                   
                 })
     
@@ -866,13 +890,41 @@ if (daysAgo === 0) {
           })
         }
       } else {
-        // Clear all alerts if the name is empty
         document.querySelector(".alert4").style.display = "none"
         document.querySelector(".alert5").style.display = "none"
         document.querySelector(".alert6").style.display = "none"
       }
     }
     
+  function dmAddFromDb() {
+    const dmsContainer = document.getElementById('dmcontainer');
+    const dmsRef = database.ref(`users/${accUsername}/chatData`);
     
+    // Listen for child added events
+    dmsRef.on('child_added', (snapshot) => {
+      if (snapshot.exists()) {
+       const post = snapshot.val();
+       const dmElement = createDmElement(post.profile, post.name);
+       dmsContainer.prepend(dmElement);
+      } else {
+      }
+    });
+    
+    // Function to create a DM element
+    function createDmElement(avatar, username) {
+      const dmElement = document.createElement('div');
+      dmElement.classList.add('dmListContainer');
+    
+      dmElement.innerHTML = `
+      <div class="dmList">
+        <div class="dmAvatar" style="background-image: url(${avatar});"></div>
+        <p>${username}</p>
+      </div>
+      `;
+    
+      return dmElement;
+    }
+  }
+     
 
   
